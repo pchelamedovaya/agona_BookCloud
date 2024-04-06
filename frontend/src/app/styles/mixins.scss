@@ -1,0 +1,76 @@
+@import 'colors';
+
+$breakpoint-mobile-min: 375px;
+$breakpoint-mobile-max: 680px;
+
+$breakpoint-tablet-min: 681px;
+$breakpoint-tablet-max: 1200px;
+
+$breakpoint-laptop: 1201px;
+$breakpoint-desktop-min: 1400px;
+
+@mixin device($breakpoint) {
+	@if $breakpoint == mobile {
+		@media (min-width: $breakpoint-mobile-min) and (max-width: $breakpoint-mobile-max) {
+			@content;
+		}
+	} @else if $breakpoint == tablet {
+		@media (min-width: $breakpoint-tablet-min) and (max-width: $breakpoint-tablet-max) {
+			@content;
+		}
+	} @else if $breakpoint == desktop {
+		@media (min-width: $breakpoint-desktop-min) {
+			@content;
+		}
+	}
+  @else if $breakpoint == tablet-laptop {
+    @media (min-width: $breakpoint-tablet-min) and (max-width: $breakpoint-laptop) {
+      @content;
+    }
+  }
+  @else if $breakpoint == tablet-desktop {
+		@media (min-width: $breakpoint-tablet-min) {
+			@content;
+		}
+	}
+  @else if $breakpoint == laptop-desktop {
+    @media (min-width: $breakpoint-laptop) {
+      @content;
+    }
+  }
+}
+
+@mixin button-styles {
+	padding: 11px 35px;
+	border-radius: 13px;
+	font-size: 17px;
+	font-family: SemiboldFont, serif;
+
+	&--primary {
+		background-color: $background-dark;
+		color: $white-transparent;
+
+		&:active {
+			background-color: $background-dark;
+			opacity: 0.7;
+		}
+	}
+
+	&--disabled {
+		background-color: $background-dark;
+		color: $white-transparent;
+		opacity: 0.5;
+	}
+}
+
+@mixin flex-col {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+@mixin flex-row {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+}

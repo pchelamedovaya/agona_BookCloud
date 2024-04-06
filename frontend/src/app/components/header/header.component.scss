@@ -1,0 +1,158 @@
+@import 'mixins';
+
+button img,
+a img {
+	vertical-align: middle;
+}
+
+.container {
+	@include flex-row;
+	justify-content: space-between;
+  user-select: none;
+}
+
+.navbar-links {
+	@include flex-row;
+	justify-content: space-between;
+}
+
+.signup,
+.login,
+.search,
+.community,
+.collection,
+.profile,
+.home,
+.logout {
+	color: $text-gray-dark-transparent;
+	font-family: SemiboldFont, serif;
+
+	&-active {
+		color: $text-gray-dark;
+	}
+}
+
+@include device(laptop-desktop) {
+	.logo-mobile,
+	.menu {
+		display: none;
+	}
+
+	.container {
+		height: 60px;
+		margin: 10px 50px;
+	}
+
+	.navbar-links {
+		gap: 40px;
+	}
+
+	.signup,
+	.login,
+	.search,
+	.community,
+	.collection,
+	.profile {
+		font-size: 17px;
+	}
+}
+
+@include device(tablet-laptop) {
+	.logo,
+	.menu {
+		display: none;
+	}
+
+	img.img {
+		width: 120px;
+	}
+
+	.container {
+		height: 55px;
+		margin: 10px 25px;
+	}
+
+	.navbar-links {
+		gap: 30px;
+	}
+
+	.signup,
+	.login,
+	.search,
+	.community,
+	.collection,
+	.profile {
+		font-size: 16px;
+	}
+
+	.logout-img {
+		width: 24px;
+	}
+}
+
+@include device(mobile) {
+	.logo,
+	.navbar {
+		display: none;
+	}
+
+	img {
+		width: 24px;
+		margin-right: 25px;
+		padding: 10px 0;
+
+		&.img {
+			width: 120px;
+			margin-left: 25px;
+		}
+	}
+
+	.container {
+		height: 55px;
+		margin: 10px 0;
+		position: relative;
+	}
+
+	.navbar-links {
+		gap: 20px;
+	}
+
+	.menu {
+		@include flex-row;
+		justify-content: end;
+
+		&-navbar {
+			@include flex-row;
+			justify-content: center;
+			position: absolute;
+			top: 65px;
+			width: 100%;
+
+			& ul,
+			li {
+				width: 100%;
+			}
+		}
+	}
+
+	.profile,
+	.home,
+	.search,
+	.community,
+	.collection,
+	.logout {
+		@include flex-row;
+		justify-content: center;
+		height: 50px;
+		width: 100%;
+
+		&:hover {
+			background-color: $blue-transparent;
+			color: $text-white;
+		}
+	}
+
+	.login {
+		margin-right: 25px;
+	}
+}

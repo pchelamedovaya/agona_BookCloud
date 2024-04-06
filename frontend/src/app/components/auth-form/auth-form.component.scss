@@ -1,0 +1,148 @@
+@import 'colors';
+@import 'mixins';
+
+.title {
+	font-family: SemiboldFont, serif;
+	font-size: 24px;
+	margin-bottom: 40px;
+  user-select: none;
+}
+
+.form-input {
+	@include flex-row;
+	width: 285px;
+
+	&--email,
+	&--password,
+	&--password-repeat {
+		width: 100%;
+		font-family: RegularFont, serif;
+	}
+
+	::placeholder {
+		text-align: start;
+	}
+
+	:focus::placeholder {
+		opacity: 0;
+		transition: opacity 0.3s ease;
+	}
+}
+
+.container-error {
+	&-message {
+		font-family: RegularFont, serif;
+		font-size: 14px;
+		color: $text-gray;
+	}
+}
+
+@include device(tablet-desktop) {
+	.mobile-button-eye {
+		display: none;
+	}
+	.container {
+		@include flex-col;
+		background-color: $background-form;
+		padding: 75px 30px;
+		border-radius: 13px;
+		justify-content: start;
+		min-width: 400px;
+		margin-top: 130px;
+		caret-color: $white-placeholder;
+	}
+
+	.title {
+		background-color: $background-form;
+		color: $text-white;
+	}
+
+	.form-input {
+		background-color: $background-form;
+		height: 60px;
+		border-bottom: 1px solid $white-border;
+		margin-bottom: 10px;
+
+		&--img {
+			background-color: $background-form;
+			margin-bottom: -10px;
+		}
+
+		&--email,
+		&--password,
+		&--password-repeat {
+			background-color: $background-form;
+			margin-bottom: -10px;
+			font-size: 18px;
+			color: $text-white;
+		}
+
+		::placeholder {
+			color: $white-placeholder;
+		}
+	}
+
+	.wrapper-email,
+	.wrapper-password,
+	.wrapper-password-repeat {
+		background-color: $background-form;
+	}
+
+	.container-error {
+		background-color: $background-form;
+
+		&-message {
+			background-color: $background-form;
+			color: $white-transparent;
+		}
+	}
+
+	.mobile-wrapper-logo--img {
+		display: none;
+	}
+}
+
+@include device(mobile) {
+	.button-eye {
+		display: none;
+	}
+
+	.container {
+		@include flex-col;
+		justify-content: start;
+		margin-top: 145px;
+		caret-color: $text-gray-dark;
+	}
+
+	.title {
+		color: $blue;
+	}
+
+	.mobile-form-input--img {
+		margin-bottom: -10px;
+	}
+
+	.form-input {
+		height: 55px;
+		border-bottom: 1px solid $gray-placeholder;
+		margin-bottom: 8px;
+
+		&--email,
+		&--password,
+		&--password-repeat {
+			margin-bottom: -8px;
+			font-size: 17px;
+			color: $text-gray-dark;
+		}
+
+		::placeholder {
+			color: $text-gray;
+		}
+	}
+
+	.container-error {
+		&-message {
+			color: $text-gray;
+		}
+	}
+}

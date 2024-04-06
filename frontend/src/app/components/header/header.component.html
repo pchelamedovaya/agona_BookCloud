@@ -1,0 +1,128 @@
+<header class="container">
+	<a class="logo" routerLink="home">
+		<img src="assets/icons/logo-dark.svg" alt="Logo" />
+	</a>
+	<a class="logo-mobile" routerLink="home">
+		<img class="img" src="../../../assets/icons/logo-dark.svg" alt="Logo" />
+	</a>
+
+	<nav class="navbar" *ngIf="this.authService.isAuthSignal(); else isNotAuth">
+		<ul class="navbar-links">
+			<li>
+				<a class="search" routerLink="search" routerLinkActive="search-active"
+					>Search</a
+				>
+			</li>
+			<li>
+				<a
+					class="community"
+					routerLink="community"
+					routerLinkActive="community-active"
+					>Community</a
+				>
+			</li>
+			<li>
+				<a
+					class="collection"
+					routerLink="collection"
+					routerLinkActive="collection-active"
+					>Collection</a
+				>
+			</li>
+		</ul>
+	</nav>
+
+	<nav class="navbar" *ngIf="this.authService.isAuthSignal()">
+		<ul class="navbar-links">
+			<li>
+				<a
+					class="profile"
+					routerLink="profile"
+					routerLinkActive="profile-active"
+				>
+					Profile
+				</a>
+			</li>
+			<li>
+				<button class="logout" (click)="logoutHandler()">
+					<img class="logout-img" src="assets/icons/logout.svg" alt="Log out" />
+				</button>
+			</li>
+		</ul>
+	</nav>
+
+	<div
+		class="menu"
+		*ngIf="this.authService.isAuthSignal()"
+		(click)="toggleMenu()"
+	>
+		<ng-container *ngIf="isMenuOpen; else closeMenu">
+			<img src="assets/icons/close.svg" alt="Close menu" />
+		</ng-container>
+		<ng-template #closeMenu>
+			<img src="assets/icons/menu.svg" alt="Menu" />
+		</ng-template>
+		<nav class="menu-navbar" *ngIf="isMenuOpen">
+			<ul>
+				<li>
+					<a
+						class="profile"
+						routerLink="profile"
+						routerLinkActive="profile-active"
+						>Profile</a
+					>
+				</li>
+        <li>
+          <a class="home" routerLink="home" routerLinkActive="home-active"
+          >Home</a
+          >
+        </li>
+				<li>
+					<a class="search" routerLink="search" routerLinkActive="search-active"
+						>Search</a
+					>
+				</li>
+				<li>
+					<a
+						class="community"
+						routerLink="community"
+						routerLinkActive="community-active"
+						>Community</a
+					>
+				</li>
+				<li>
+					<a
+						class="collection"
+						routerLink="collection"
+						routerLinkActive="collection-active"
+						>Collection</a
+					>
+				</li>
+				<li>
+					<a
+						(click)="logoutHandler()"
+						class="logout"
+						routerLink="logout"
+						routerLinkActive="logout-active"
+						>Log out</a
+					>
+				</li>
+			</ul>
+		</nav>
+	</div>
+
+	<ng-template #isNotAuth>
+		<ul class="navbar-links">
+			<li>
+				<a class="signup" routerLink="signup" routerLinkActive="signup-active"
+					>Sign up</a
+				>
+			</li>
+			<li>
+				<a class="login" routerLink="login" routerLinkActive="login-active"
+					>Log in</a
+				>
+			</li>
+		</ul>
+	</ng-template>
+</header>

@@ -1,0 +1,197 @@
+<form class="container" [formGroup]="userData" (ngSubmit)="onSubmit()">
+	<div class="title">
+		{{ isRegistrationForm ? 'Take the First Step' : 'Access your Account' }}
+	</div>
+
+	<div class="wrapper-email">
+		<label class="form-input" for="email">
+			<input
+				required
+				formControlName="email"
+				class="form-input--email"
+				placeholder="Email"
+				type="email"
+				id="email"
+			/>
+		</label>
+		<ng-container
+			class="container-error"
+			*ngIf="
+				(userData.controls['email'].invalid &&
+					userData.controls['email'].dirty) ||
+				userData.controls['email'].touched
+			"
+		>
+			<div
+				class="container-error-message"
+				*ngIf="userData.controls['email'].hasError('required')"
+			>
+				Email is required
+			</div>
+			<div
+				class="container-error-message"
+				*ngIf="userData.controls['email'].hasError('pattern')"
+			>
+				Please enter a correct email
+			</div>
+		</ng-container>
+	</div>
+
+	<div class="wrapper-password">
+		<label class="form-input" for="password">
+			<input
+				formControlName="password"
+				required
+				class="form-input--password"
+				type="{{ hidePassword ? 'password' : 'text' }}"
+				name="password"
+				id="password"
+				placeholder="Password"
+			/>
+			<button
+				class="button-eye"
+				type="button"
+				(click)="togglePasswordVisibility()"
+			>
+				<img
+					class="form-input--img"
+					*ngIf="hidePassword"
+					src="../../../assets/icons/closed-eye-light.svg"
+					alt="Closed Eye"
+				/>
+				<img
+					class="form-input--img"
+					*ngIf="!hidePassword"
+					src="../../../assets/icons/open-eye-light.svg"
+					alt="Open Eye"
+				/>
+			</button>
+
+			<button
+				class="mobile-button-eye"
+				type="button"
+				(click)="togglePasswordVisibility()"
+			>
+				<img
+					class="mobile-form-input--img"
+					*ngIf="hidePassword"
+					src="../../../assets/icons/closed-eye-dark.svg"
+					alt="Closed Eye"
+				/>
+				<img
+					class="mobile-form-input--img"
+					*ngIf="!hidePassword"
+					src="../../../assets/icons/open-eye-dark.svg"
+					alt="Open Eye"
+				/>
+			</button>
+		</label>
+		<ng-container
+			class="container-error"
+			*ngIf="
+				(userData.controls['password'].invalid &&
+					userData.controls['password'].dirty) ||
+				userData.controls['password'].touched
+			"
+		>
+			<div
+				class="container-error-message"
+				*ngIf="userData.controls['password'].hasError('required')"
+			>
+				Password is required
+			</div>
+			<div
+				class="container-error-message"
+				*ngIf="userData.controls['password'].hasError('minlength')"
+			>
+				The password cannot contain less<br />
+				than 6 characters
+			</div>
+		</ng-container>
+	</div>
+
+	<div class="wrapper-password-repeat">
+		<label *ngIf="isRegistrationForm" class="form-input" for="password-repeat">
+			<input
+				formControlName="passwordRepeat"
+				required
+				class="form-input--password-repeat"
+				type="{{ hidePasswordRepeat ? 'password' : 'text' }}"
+				name="passwordRepeat"
+				id="password-repeat"
+				placeholder="Repeat Password"
+			/>
+			<button
+				class="button-eye"
+				type="button"
+				(click)="togglePasswordRepeatVisibility()"
+			>
+				<img
+					class="form-input--img"
+					*ngIf="hidePasswordRepeat"
+					src="../../../assets/icons/closed-eye-light.svg"
+					alt="Closed Eye"
+				/>
+				<img
+					class="form-input--img"
+					*ngIf="!hidePasswordRepeat"
+					src="../../../assets/icons/open-eye-light.svg"
+					alt="Open Eye"
+				/>
+			</button>
+
+			<button
+				class="mobile-button-eye"
+				type="button"
+				(click)="togglePasswordRepeatVisibility()"
+			>
+				<img
+					class="mobile-form-input--img"
+					*ngIf="hidePasswordRepeat"
+					src="../../../assets/icons/closed-eye-dark.svg"
+					alt="Closed Eye"
+				/>
+				<img
+					class="mobile-form-input--img"
+					*ngIf="!hidePasswordRepeat"
+					src="../../../assets/icons/open-eye-dark.svg"
+					alt="Open Eye"
+				/>
+			</button>
+		</label>
+		<ng-container
+			class="container-error"
+			*ngIf="
+				(userData.controls['passwordRepeat'].invalid &&
+					userData.controls['passwordRepeat'].dirty) ||
+				userData.controls['passwordRepeat'].touched
+			"
+		>
+			<div
+				class="container-error-message"
+				*ngIf="userData.controls['passwordRepeat'].hasError('required')"
+			>
+				You need to re-enter your password<br />
+			</div>
+
+			<div
+				class="container-error-message"
+				*ngIf="
+					userData.controls['passwordRepeat'].hasError('passwordMatch') &&
+					userData.controls['passwordRepeat'].value?.length > 0
+				"
+			>
+				Passwords don't match
+			</div>
+		</ng-container>
+	</div>
+
+	<button
+		appButton
+		type="submit"
+		[disabled]="!userData.valid"
+		[theme]="userData.valid ? 'primary' : 'disabled'"
+	>
+		{{ isRegistrationForm ? 'Join Now' : 'Log in' }}
+	</button>
+</form>

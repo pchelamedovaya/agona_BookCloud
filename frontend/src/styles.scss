@@ -1,0 +1,66 @@
+@import 'normalize.css';
+@import 'app/styles/colors';
+@import 'app/styles/mixins';
+
+* {
+	box-sizing: border-box;
+	background: $background;
+}
+
+input {
+	border: none;
+	outline: none;
+  &::placeholder{
+    user-select: none;
+  }
+}
+
+button {
+	padding: 0;
+	border: none;
+	font: inherit;
+	color: inherit;
+  user-select: none;
+}
+
+ul,
+li {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+a {
+	display: inline-block;
+	margin: 0;
+	padding: 0;
+	text-decoration: none;
+}
+
+@font-face {
+	font-family: 'RegularFont';
+	src: url('./assets/fonts/Inter-Regular.ttf') format('truetype');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'SemiboldFont';
+	src: url('./assets/fonts/Inter-SemiBold.ttf') format('truetype');
+	font-weight: 600;
+	font-style: normal;
+}
+
+@include device(tablet-desktop) {
+	.buttonDir {
+		@include button-styles;
+		margin-top: 75px;
+	}
+}
+
+@include device(mobile) {
+	.buttonDir {
+		@include button-styles;
+		margin-top: 50px;
+	}
+}

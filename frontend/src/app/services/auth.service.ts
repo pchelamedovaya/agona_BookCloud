@@ -1,8 +1,8 @@
 import { Injectable, signal } from '@angular/core'
 import { HttpClient } from '@angular/common/http'
-import { IAuthUser, IToken } from '../types/user.interface'
+import { IAuthData, IAuthUser } from '../types/user.interface'
 import { API_URL } from '../constants/constants'
-import { catchError, tap } from 'rxjs'
+import { catchError, Subject, tap } from 'rxjs'
 import { Router } from '@angular/router'
 
 @Injectable({
@@ -10,8 +10,9 @@ import { Router } from '@angular/router'
 })
 export class AuthService {
 	isAuthSignal = signal<boolean>(false)
+  onUserRoleChanged: Subject<string | undefined> = new Subject<string | undefined>();
 
-	constructor(
+  constructor(
 		private readonly http: HttpClient,
 		private readonly router: Router
 	) {
@@ -35,10 +36,11 @@ export class AuthService {
 
 	logIn(userData: IAuthUser) {
 		return this.http
-			.post<IToken>(`${API_URL}/login`, userData)
+			.post<IAuthData>(`${API_URL}/login`, userData)
 			.pipe(
-				tap((response: IToken) => {
+				tap((response: IAuthData) => {
 					localStorage.setItem('token', response.token)
+          this.onUserRoleChanged.next(response.role);
 					this.isAuthSignal.set(true)
 				}),
 				catchError(err => {
@@ -52,6 +54,7 @@ export class AuthService {
 
   logout() {
     localStorage.removeItem("token")
+    this.onUserRoleChanged.next(undefined);
     this.isAuthSignal.set(false)
     this.router?.navigate(['/login'])
   }

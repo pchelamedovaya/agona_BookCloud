@@ -17,6 +17,7 @@ import { SearchComponent } from './pages/search/search.component'
 import { CommunityComponent } from './pages/community/community.component'
 import { CollectionComponent } from './pages/collection/collection.component'
 import { ProfileComponent } from './pages/profile/profile.component'
+import { DashboardComponent } from './pages/dashboard/dashboard.component'
 
 @NgModule({
 	declarations: [
@@ -31,7 +32,8 @@ import { ProfileComponent } from './pages/profile/profile.component'
 		SearchComponent,
 		CommunityComponent,
 		CollectionComponent,
-		ProfileComponent
+		ProfileComponent,
+		DashboardComponent
 	],
 	imports: [
 		BrowserModule,

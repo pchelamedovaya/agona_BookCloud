@@ -3,6 +3,7 @@ export interface IAuthUser {
 	password: string
 }
 
-export interface IToken {
+export interface IAuthData {
 	token: string
+  role: string
 }

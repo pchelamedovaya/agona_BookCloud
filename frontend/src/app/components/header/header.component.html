@@ -29,6 +29,14 @@
 					>Collection</a
 				>
 			</li>
+			<li *ngIf="userRole === 'ADMIN'">
+				<a
+					class="dashboard"
+					routerLink="dashboard"
+					routerLinkActive="dashboard-active"
+					>Dashboard</a
+				>
+			</li>
 		</ul>
 	</nav>
 
@@ -64,6 +72,14 @@
 		</ng-template>
 		<nav class="menu-navbar" *ngIf="isMenuOpen">
 			<ul>
+				<li *ngIf="userRole === 'ADMIN'">
+					<a
+						class="dashboard"
+						routerLink="dashboard"
+						routerLinkActive="dashboard-active"
+						>Dashboard</a
+					>
+				</li>
 				<li>
 					<a
 						class="profile"
@@ -72,11 +88,11 @@
 						>Profile</a
 					>
 				</li>
-        <li>
-          <a class="home" routerLink="home" routerLinkActive="home-active"
-          >Home</a
-          >
-        </li>
+				<li>
+					<a class="home" routerLink="home" routerLinkActive="home-active"
+						>Home</a
+					>
+				</li>
 				<li>
 					<a class="search" routerLink="search" routerLinkActive="search-active"
 						>Search</a

@@ -7,41 +7,59 @@ import { SearchComponent } from './pages/search/search.component'
 import { CommunityComponent } from './pages/community/community.component'
 import { CollectionComponent } from './pages/collection/collection.component'
 import { ProfileComponent } from './pages/profile/profile.component'
+import { AuthGuard } from './guards/auth.guard'
+import { DashboardComponent } from './pages/dashboard/dashboard.component'
 
 const routes: Routes = [
-  {
-    path: 'home',
-    component: HomeComponent,
-    title: 'Home'
-  },
-  {
-    path: 'signup',
-    component: SignupComponent,
-  },
-  {
-    path: 'login',
-    component: LoginComponent,
-  },
-  {
-    path: 'search',
-    component: SearchComponent,
-  },
-  {
-    path: 'community',
-    component: CommunityComponent,
-  },
-  {
-    path: 'collection',
-    component: CollectionComponent,
-  },
-  {
-    path: 'profile',
-    component: ProfileComponent,
-  },
-  {
-    path: '**',
-    redirectTo: 'home'
-  }
+	{
+		path: 'home',
+		component: HomeComponent,
+		title: 'Home'
+	},
+	{
+		path: 'signup',
+		component: SignupComponent,
+    title: 'Sign up'
+	},
+	{
+		path: 'login',
+		component: LoginComponent,
+    title: 'Log in'
+	},
+	{
+		path: 'search',
+		component: SearchComponent,
+		title: 'Search',
+		canActivate: [AuthGuard()]
+	},
+	{
+		path: 'community',
+		component: CommunityComponent,
+		title: 'Community',
+		canActivate: [AuthGuard()]
+	},
+	{
+		path: 'collection',
+		component: CollectionComponent,
+		title: 'Collection',
+		canActivate: [AuthGuard()]
+	},
+	{
+		path: 'profile',
+		component: ProfileComponent,
+		title: 'Profile',
+		canActivate: [AuthGuard()]
+	},
+	{
+		path: 'dashboard',
+		component: DashboardComponent,
+		title: 'Dashboard',
+    canActivate: [AuthGuard()]
+	},
+	{
+		path: '**',
+		redirectTo: 'home'
+	}
 ]
 
 @NgModule({

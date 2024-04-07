@@ -1,12 +1,11 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core'
 import {
-	AbstractControl,
 	FormControl,
 	FormGroup,
-	ValidatorFn,
 	Validators
 } from '@angular/forms'
 import { AuthService } from '../../services/auth.service'
+import { passwordMatchValidator } from '../../validators'
 
 @Component({
 	selector: 'app-auth-form',
@@ -63,13 +62,5 @@ export class AuthFormComponent {
 				console.log('error')
 			}
 		}
-	}
-}
-
-export function passwordMatchValidator(controlName: string): ValidatorFn {
-	return (control: AbstractControl): { [key: string]: any } | null => {
-		const password = control.root.get(controlName)?.value
-		const passwordRep = control.value
-		return passwordRep === password ? null : { passwordMatch: true }
 	}
 }

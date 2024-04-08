@@ -10,9 +10,11 @@ import { Router } from '@angular/router'
 })
 export class AuthService {
 	isAuthSignal = signal<boolean>(false)
-  onUserRoleChanged: Subject<string | undefined> = new Subject<string | undefined>();
+	onUserRoleChanged: Subject<string | undefined> = new Subject<
+		string | undefined
+	>()
 
-  constructor(
+	constructor(
 		private readonly http: HttpClient,
 		private readonly router: Router
 	) {
@@ -40,7 +42,8 @@ export class AuthService {
 			.pipe(
 				tap((response: IAuthData) => {
 					localStorage.setItem('token', response.token)
-          this.onUserRoleChanged.next(response.role);
+					localStorage.setItem('role', response.role)
+					this.onUserRoleChanged.next(response.role)
 					this.isAuthSignal.set(true)
 				}),
 				catchError(err => {
@@ -48,14 +51,15 @@ export class AuthService {
 				})
 			)
 			.subscribe(() => {
-        this.router?.navigate(['/home'])
-      })
+				this.router?.navigate(['/home'])
+			})
 	}
 
-  logout() {
-    localStorage.removeItem("token")
-    this.onUserRoleChanged.next(undefined);
-    this.isAuthSignal.set(false)
-    this.router?.navigate(['/login'])
-  }
+	logout() {
+		localStorage.removeItem('token')
+    localStorage.removeItem('role')
+		this.onUserRoleChanged.next(undefined)
+		this.isAuthSignal.set(false)
+		this.router?.navigate(['/login'])
+	}
 }

@@ -33,7 +33,7 @@ a img {
 	}
 }
 
-@include device(laptop-desktop) {
+@include device(laptop-plus) {
 	.logo-mobile,
 	.menu {
 		display: none;
@@ -64,6 +64,10 @@ a img {
 	.menu {
 		display: none;
 	}
+
+  .logo-mobile{
+    display: block;
+  }
 
 	img.img {
 		width: 120px;

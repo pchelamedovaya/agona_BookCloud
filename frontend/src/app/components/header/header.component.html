@@ -13,7 +13,7 @@
 					>Search</a
 				>
 			</li>
-			<li>
+			<li  *ngIf="userRole === 'USER'">
 				<a
 					class="community"
 					routerLink="community"

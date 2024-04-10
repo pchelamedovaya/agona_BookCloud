@@ -9,6 +9,7 @@ import { CollectionComponent } from './pages/collection/collection.component'
 import { ProfileComponent } from './pages/profile/profile.component'
 import { AuthGuard } from './guards/auth.guard'
 import { DashboardComponent } from './pages/dashboard/dashboard.component'
+import { AdminGuard } from './guards/admin.guard'
 
 const routes: Routes = [
 	{
@@ -54,7 +55,7 @@ const routes: Routes = [
 		path: 'dashboard',
 		component: DashboardComponent,
 		title: 'Dashboard',
-    canActivate: [AuthGuard()]
+    canActivate: [AuthGuard(), AdminGuard()]
 	},
 	{
 		path: '**',

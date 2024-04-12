@@ -1,1 +1,49 @@
-<p>home works!</p>
+<main>
+	<div class="container">
+		<div class="title">
+			Reading Is<br />
+			Fascinating
+		</div>
+		<div class="subtitle">
+			Embark on a journey through the enchanting realms of literature!
+			<span class="subtitle-more"
+				>Here every page is a new adventure and every word is a new
+				thought</span
+			>
+		</div>
+		<div class="search">
+			<input class="search-input" type="text" placeholder="Type here.." />
+			<button class="search-button">
+				<img class="search-img" src="assets/icons/search.svg" alt="Search" />
+			</button>
+		</div>
+	</div>
+	<div class="container-category">
+		<span class="container-category-span"></span>
+		<div class="title-category">Read by Category</div>
+		<div class="subtitle-category">
+			Here you can choose a book based on your favorite genres
+		</div>
+		<div class="container-genres">
+			<div class="genre-journalism">Journalism<a>Show more</a></div>
+			<div class="genre-fantasy">
+				<span class="genre-fantasy-span">Read</span>
+				Science fiction & Fantasy<a>Show more</a>
+			</div>
+			<div class="genre-prose">Classic prose<a>Show more</a></div>
+			<div class="genre-novel">Romance novels<a>Show more</a></div>
+			<div class="genre-detective">Detective & Thriller<a>Show more</a></div>
+			<div class="genre-biography">Biography & Memoirs<a>Show more</a></div>
+		</div>
+	</div>
+	<div class="preferences-container">
+		<div class="preferences-wrapper">
+			<div class="preferences-title">Based on your preferences</div>
+			<button appButton class="preferences-button">View all List</button>
+		</div>
+		<div class="books-list">
+      <app-book-card *ngFor="let book of books" [book]="book"></app-book-card>
+		</div>
+		<button appButton class="preferences-button-mobile">View all List</button>
+	</div>
+</main>

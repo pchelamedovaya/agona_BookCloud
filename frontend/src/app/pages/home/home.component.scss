@@ -1,0 +1,642 @@
+@import 'colors';
+@import 'mixins';
+
+main {
+	@include flex-col;
+	justify-content: center;
+}
+
+img {
+	vertical-align: middle;
+}
+
+.title {
+	font-family: SemiboldFont, serif;
+	color: $text-white;
+	background: $background-form;
+	letter-spacing: 1.25px;
+	user-select: none;
+
+	&-category {
+		@include flex-row;
+		justify-content: center;
+		font-family: SemiboldFont, serif;
+		color: $text-gray-dark;
+		letter-spacing: 1.25px;
+		user-select: none;
+	}
+}
+
+.subtitle,
+.subtitle-more {
+	font-family: RegularFont, serif;
+	color: $text-white;
+	background: $background-form;
+	letter-spacing: 0.5px;
+	user-select: none;
+
+	&-category {
+		@include flex-row;
+		justify-content: center;
+		font-family: RegularFont, serif;
+		color: $text-gray-dark;
+		letter-spacing: 0.5px;
+		user-select: none;
+	}
+}
+
+.search {
+	@include flex-row;
+	justify-content: space-between;
+	background: $background-dark;
+	border-radius: 13px;
+	padding: 0 20px;
+
+	&-input {
+		width: calc(100% - 40px);
+		background: $background-dark;
+		color: $text-white;
+		font-family: RegularFont, serif;
+
+		&::selection {
+			background-color: $blue-transparent;
+		}
+
+		&::placeholder {
+			color: $white-placeholder;
+			font-family: RegularFont, serif;
+		}
+
+		&:focus::placeholder {
+			opacity: 0;
+			transition: opacity 0.3s ease;
+		}
+	}
+
+	&-button {
+		background: $background-dark;
+	}
+
+	&-img {
+		background: $background-dark;
+	}
+}
+
+.search-button {
+  cursor: pointer;
+}
+
+.container-category {
+	@include flex-col;
+	background: $background;
+}
+
+.container-genres {
+	width: 100%;
+}
+
+.genre-novel,
+.genre-fantasy,
+.genre-prose,
+.genre-journalism,
+.genre-detective,
+.genre-biography {
+	font-family: SemiboldFont, serif;
+	color: $text-gray-dark;
+	border-radius: 15px;
+	letter-spacing: 1.25px;
+	user-select: none;
+
+	a {
+		font-family: RegularFont, serif;
+		color: $text-gray-dark;
+		display: block;
+		user-select: none;
+		border-bottom: 1px $text-gray-dark solid;
+		width: 96.5px;
+		cursor: pointer;
+	}
+}
+
+.genre-fantasy {
+	@include flex-col;
+
+	&-span {
+		background: $background-light;
+		font-family: RegularFont, serif;
+		margin-bottom: 12px;
+	}
+}
+
+.genre-prose,
+.genre-detective,
+.genre-biography {
+	background: $background-dark-transparent;
+}
+
+.genre-novel,
+.genre-fantasy,
+.genre-journalism {
+	background: $background-light;
+}
+
+.preferences {
+	&-container {
+		background: $background-form;
+		border-radius: 15px;
+	}
+
+	&-wrapper {
+		@include flex-row;
+		justify-content: space-between;
+		background: $background-form;
+		border-bottom: 1px $background-dark solid;
+		margin-bottom: 50px;
+	}
+
+	&-title {
+		font-family: SemiboldFont, serif;
+		background: $background-form;
+		color: $text-white;
+		line-height: 1.15;
+		letter-spacing: 1.25px;
+	}
+
+	&-button {
+		margin: 0;
+		cursor: pointer;
+	}
+
+	&-button-mobile {
+		cursor: pointer;
+	}
+}
+
+.books-list {
+	background: $background-form;
+}
+
+@include dev(mobile) {
+	.container {
+		margin: 25px 25px 0;
+		width: 100%;
+		background: $background;
+	}
+
+	.title,
+	.subtitle,
+	.subtitle-more {
+		display: none;
+	}
+
+	.search {
+		height: 42px;
+		margin: 0 25px;
+
+		&-input {
+			font-size: 14px;
+
+			&::placeholder {
+				font-size: 14px;
+			}
+		}
+	}
+
+	.preferences {
+		&-container {
+			width: calc(100% - 50px);
+			margin: 40px 25px 0;
+			padding: 15px 20px 30px;
+		}
+
+		&-wrapper {
+			padding-bottom: 8px;
+			margin-bottom: 25px;
+		}
+
+		&-title {
+			font-size: 20px;
+			line-height: 26px;
+		}
+
+		&-button {
+			display: none;
+
+			&-mobile {
+				width: 100%;
+				padding-top: 8px;
+				padding-bottom: 8px;
+				font-size: 14px;
+				margin-top: 20px;
+			}
+		}
+	}
+
+	.container-category {
+		width: calc(100% - 50px);
+		margin: 35px 25px 0;
+
+		&-span {
+			display: none;
+		}
+	}
+
+	.title-category {
+		width: 100%;
+		justify-content: start;
+		font-size: 20px;
+		margin-bottom: 8px;
+		line-height: 1.15;
+	}
+
+	.subtitle-category {
+		width: 100%;
+		justify-content: start;
+		font-size: 16px;
+		margin-bottom: 30px;
+		line-height: 20px;
+	}
+
+	.container-genres {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		gap: 10px;
+	}
+
+	.genre {
+		&-prose,
+		&-fantasy {
+			display: none;
+		}
+
+		&-novel {
+			order: 1;
+		}
+
+		&-journalism {
+			grid-row-start: 1;
+			grid-row-end: 3;
+		}
+
+		&-detective {
+			order: 2;
+			grid-column-start: 1;
+			grid-column-end: 3;
+		}
+	}
+
+	.genre-novel,
+	.genre-fantasy,
+	.genre-prose,
+	.genre-journalism,
+	.genre-detective,
+	.genre-biography {
+		font-size: 18px;
+		line-height: 26px;
+		padding: 20px 20px 50px;
+
+		a {
+			margin-top: 8px;
+			font-size: 16px;
+			height: 26px;
+		}
+	}
+
+	.books-list {
+		@include flex-col;
+		column-gap: 20px;
+		row-gap: 30px;
+	}
+}
+
+@include dev(mobile-max) {
+	.books-list {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		column-gap: 20px;
+		row-gap: 30px;
+	}
+}
+
+@include dev(tablet) {
+	.container {
+		background: $background-form;
+		border-radius: 15px;
+		caret-color: $white-placeholder;
+		width: calc(100% - 50px);
+		margin: 40px 25px 0;
+		padding: 45px 40px 70px;
+	}
+
+	.title {
+		display: block;
+		font-size: 60px;
+		margin-bottom: 17px;
+		width: 435px;
+
+		&-category {
+			font-size: 30px;
+			margin-bottom: 8px;
+			line-height: 1.15;
+			padding-top: 15px;
+		}
+	}
+
+	.subtitle {
+		display: block;
+		font-size: 16px;
+		margin-bottom: 35px;
+		line-height: 25px;
+		width: 435px;
+
+		&-category {
+			font-size: 16px;
+			margin-bottom: 30px;
+			line-height: 30px;
+		}
+	}
+
+	.subtitle-more {
+		display: none;
+	}
+
+	.search {
+		margin: 0;
+		width: 435px;
+		height: 45px;
+
+		&-input {
+			font-size: 16px;
+
+			&::placeholder {
+				font-size: 16px;
+			}
+		}
+	}
+
+	.container-genres {
+		grid-template-columns: repeat(3, 1fr);
+		gap: 20px;
+	}
+
+	.genre {
+		&-novel {
+			display: none;
+		}
+
+		&-prose,
+		&-fantasy {
+			display: initial;
+			padding: 20px 20px 70px;
+		}
+
+		&-detective,
+		&-journalism {
+			order: initial;
+			grid-row-start: initial;
+			grid-row-end: initial;
+			grid-column-start: initial;
+			grid-column-end: initial;
+			padding: 20px 20px 70px;
+		}
+
+		&-fantasy {
+			display: flex;
+			align-items: center;
+			grid-row-start: 1;
+			grid-row-end: 3;
+			grid-column-start: 3;
+		}
+
+		&-detective {
+			width: calc(100% + 90px);
+			margin-right: 90px;
+		}
+
+		&-biography {
+			width: calc(100% - 90px);
+			margin-left: 90px;
+			padding: 20px 20px 70px;
+		}
+	}
+
+	.preferences {
+		&-container {
+			width: calc(100% - 50px);
+			margin: 50px 25px 0;
+			padding: 35px 45px;
+		}
+
+		&-wrapper {
+			padding-bottom: 10px;
+		}
+
+		&-title {
+			font-size: 24px;
+		}
+
+		&-button {
+			display: block;
+		}
+
+		&-button-mobile {
+			display: none;
+		}
+	}
+
+	.container-category {
+		width: calc(100% - 50px);
+		margin: 45px 25px 0;
+
+		&-span {
+			width: 85px;
+			border-top: 4px $text-gray-dark solid;
+		}
+	}
+
+	.books-list {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		row-gap: 30px;
+		column-gap: 45px;
+		align-items: start;
+	}
+}
+
+@include dev(laptop) {
+	.container {
+		max-width: 1550px;
+		width: calc(100% - 100px);
+		margin: 40px 50px 0;
+		padding: 90px 70px 110px 70px;
+	}
+
+	.title {
+		font-size: 80px;
+		margin-bottom: 20px;
+		line-height: 1.15;
+		width: 590px;
+
+		&-category {
+			font-size: 35px;
+			margin-bottom: 10px;
+			line-height: 1.15;
+			padding-top: 18px;
+		}
+	}
+
+	.subtitle,
+	.subtitle-more {
+		font-size: 18px;
+		margin-bottom: 45px;
+		line-height: 30px;
+		width: 585px;
+
+		&-category {
+			font-size: 18px;
+			margin-bottom: 40px;
+			line-height: 30px;
+		}
+	}
+
+	.search {
+		width: 585px;
+		height: 50px;
+
+		&-input {
+			font-size: 18px;
+
+			&::placeholder {
+				font-size: 18px;
+			}
+		}
+	}
+
+	.container-category {
+		max-width: 1550px;
+		width: calc(100% - 100px);
+		margin: 50px 50px 0;
+
+		&-span {
+			width: 85px;
+			border-top: 4px $text-gray-dark solid;
+		}
+	}
+
+	.container-genres {
+		grid-template-columns: repeat(5, 1fr);
+	}
+
+	.genre {
+		&-novel {
+			display: block;
+		}
+
+		&-prose,
+		&-fantasy {
+			display: initial;
+		}
+
+		&-detective,
+		&-journalism,
+		&-fantasy {
+			order: initial;
+			grid-row-start: initial;
+			grid-row-end: initial;
+			grid-column-start: initial;
+			grid-column-end: initial;
+
+			&-span {
+				margin-bottom: 24px;
+			}
+		}
+
+		&-journalism {
+			grid-column-start: 1;
+			grid-row-start: 1;
+		}
+
+		&-fantasy {
+			display: flex;
+			align-items: center;
+			grid-column-start: 3;
+			grid-column-end: 5;
+			grid-row-start: 1;
+			grid-row-end: 3;
+		}
+
+		&-detective {
+			width: initial;
+			margin: 0;
+			grid-column-start: 1;
+			grid-column-end: 3;
+		}
+
+		&-biography {
+			width: initial;
+			margin: 0;
+			grid-row-start: 1;
+		}
+
+		&-prose {
+			grid-row-start: 2;
+			grid-column-start: 5;
+			height: calc(100% - 90px);
+			margin-top: 90px;
+		}
+
+		&-novel {
+			grid-row-start: 1;
+			grid-column-start: 5;
+			height: calc(100% + 90px);
+			margin-bottom: 90px;
+		}
+	}
+
+	.genre-novel,
+	.genre-fantasy,
+	.genre-prose,
+	.genre-journalism,
+	.genre-detective,
+	.genre-biography {
+		font-size: 22px;
+		line-height: 30px;
+
+		a {
+			font-size: 16px;
+			height: 26px;
+			margin-top: 12px;
+		}
+	}
+
+	.preferences {
+		&-container {
+			max-width: 1550px;
+			width: calc(100% - 100px);
+			margin: 50px 50px 0;
+			padding: 35px 70px;
+		}
+
+		&-wrapper {
+			padding-bottom: 12px;
+		}
+
+		&-title {
+			font-size: 30px;
+		}
+
+		&-button-mobile {
+			display: none;
+		}
+	}
+
+	.books-list {
+		grid-template-columns: repeat(3, 1fr);
+	}
+}
+
+@include dev(desktop) {
+	.books-list {
+		grid-template-columns: repeat(4, 1fr);
+	}
+}

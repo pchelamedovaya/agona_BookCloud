@@ -1,0 +1,144 @@
+@import 'colors';
+@import 'mixins';
+
+.container-book-card {
+	background: $background-form;
+	height: 100%;
+}
+
+.cover {
+	border-radius: 13px;
+	width: 100%;
+	padding-top: calc(4 / 3 * 100%);
+}
+
+.content {
+	background: $background-form;
+}
+
+.title {
+	background: $background-form;
+	font-family: SemiboldFont, serif;
+	color: $text-white;
+	user-select: none;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	white-space: normal;
+}
+
+.author {
+	background: $background-form;
+	font-family: SemiboldFont, serif;
+	color: $text-white;
+	user-select: none;
+}
+
+.description {
+	background: $background-form;
+	font-family: RegularFont, serif;
+	color: $text-white;
+	user-select: none;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	white-space: normal;
+}
+
+@include dev(mobile) {
+	.container-book-card {
+		@include flex-col;
+		gap: 10px;
+		align-items: start;
+	}
+
+	.title {
+		font-size: 20px;
+		line-height: 26px;
+    margin-bottom: 10px;
+	}
+
+	.author {
+		font-size: 16px;
+		margin-bottom: 14px;
+	}
+
+	.description {
+		line-height: 24px;
+		font-size: 16px;
+		-webkit-line-clamp: 3;
+	}
+}
+
+@include dev(tablet) {
+	.container-book-card {
+		@include flex-col;
+		gap: 15px;
+	}
+
+	.title {
+		-webkit-line-clamp: 2;
+	}
+
+	.author {
+		line-height: 24px;
+	}
+
+	.description {
+		-webkit-line-clamp: 5;
+	}
+}
+
+@include dev(laptop) {
+	.container-book-card {
+		@include flex-col;
+		align-items: center;
+	}
+
+	.title {
+    font-size: 22px;
+		-webkit-line-clamp: 1;
+		display: flex;
+		justify-content: start;
+    margin-bottom: 12px;
+	}
+
+	.author {
+		display: flex;
+		justify-content: start;
+		font-size: 18px;
+		margin-bottom: 16px;
+	}
+
+	.description {
+		line-height: 26px;
+		font-size: 18px;
+		-webkit-line-clamp: 5;
+	}
+}
+
+@include dev(desktop) {
+	.container-book-card {
+		@include flex-col;
+		gap: 16px;
+	}
+
+	.title {
+		font-size: 24px;
+		line-height: 30px;
+		-webkit-line-clamp: 2;
+    margin-bottom: 14px;
+	}
+
+  .author{
+    font-size: 20px;
+    margin-bottom: 18px;
+  }
+
+	.description {
+    line-height: 28px;
+		-webkit-line-clamp: 7;
+	}
+}

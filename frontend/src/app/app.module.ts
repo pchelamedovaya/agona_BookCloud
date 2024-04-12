@@ -18,6 +18,8 @@ import { CommunityComponent } from './pages/community/community.component'
 import { CollectionComponent } from './pages/collection/collection.component'
 import { ProfileComponent } from './pages/profile/profile.component'
 import { DashboardComponent } from './pages/dashboard/dashboard.component'
+import { BookCardComponent } from './components/book-card/book-card.component'
+import { UserCardComponent } from './components/user-card/user-card.component'
 
 @NgModule({
 	declarations: [
@@ -33,7 +35,9 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component'
 		CommunityComponent,
 		CollectionComponent,
 		ProfileComponent,
-		DashboardComponent
+		DashboardComponent,
+		BookCardComponent,
+		UserCardComponent
 	],
 	imports: [
 		BrowserModule,

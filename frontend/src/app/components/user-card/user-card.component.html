@@ -1,0 +1,14 @@
+<div class="container">
+	<div class="info">
+		<div class="name">Name: {{ user.firstname }} {{ user.lastname }}</div>
+		<div class="email">Email: {{ user.email }}</div>
+		<div class="role">Role: {{ user.role | uppercase }}</div>
+		<div class="status">
+			Activity status:
+			{{ user.isActive ? ('active' | uppercase) : ('inactive' | uppercase) }}
+		</div>
+	</div>
+	<button class="button-block" appButton>
+		{{ user.isActive ? 'Block' : 'Unlock' }}
+	</button>
+</div>

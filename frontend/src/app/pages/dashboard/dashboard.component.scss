@@ -1,0 +1,35 @@
+@import 'mixins';
+
+.container {
+  @include flex-col;
+  display: grid;
+  align-items: start;
+}
+
+@include dev(mobile) {
+	.container {
+		width: calc(100% - 50px);
+		margin: 25px 25px 0;
+		gap: 15px;
+	}
+}
+
+@include dev(tablet) {
+	.container {
+		grid-template-columns: repeat(2, 1fr);
+	}
+}
+
+@include dev(laptop) {
+	.container {
+		width: calc(100% - 100px);
+		margin: 40px 50px 0;
+		gap: 25px;
+	}
+}
+
+@include dev(desktop) {
+	.container {
+		grid-template-columns: repeat(3, 1fr);
+	}
+}

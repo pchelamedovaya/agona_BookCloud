@@ -65,10 +65,10 @@
 		(click)="toggleMenu()"
 	>
 		<ng-container *ngIf="isMenuOpen; else closeMenu">
-			<img src="assets/icons/close.svg" alt="Close menu" />
+			<img class='menu-button' src="assets/icons/close.svg" alt="Close menu" />
 		</ng-container>
 		<ng-template #closeMenu>
-			<img src="assets/icons/menu.svg" alt="Menu" />
+			<img class='menu-button' src="assets/icons/menu.svg" alt="Menu" />
 		</ng-template>
 		<nav class="menu-navbar" *ngIf="isMenuOpen">
 			<ul>

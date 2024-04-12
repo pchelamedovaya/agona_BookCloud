@@ -8,7 +8,7 @@ a img {
 .container {
 	@include flex-row;
 	justify-content: space-between;
-  user-select: none;
+	user-select: none;
 }
 
 .navbar-links {
@@ -33,71 +33,11 @@ a img {
 	}
 }
 
-@include device(laptop-plus) {
-	.logo-mobile,
-	.menu {
-		display: none;
-	}
-
-	.container {
-		height: 60px;
-		margin: 10px 50px;
-	}
-
-	.navbar-links {
-		gap: 40px;
-	}
-
-	.signup,
-	.login,
-	.search,
-	.community,
-	.collection,
-	.profile,
-  .dashboard {
-		font-size: 17px;
-	}
+.menu-button {
+  cursor: pointer;
 }
 
-@include device(tablet-laptop) {
-	.logo,
-	.menu {
-		display: none;
-	}
-
-  .logo-mobile{
-    display: block;
-  }
-
-	img.img {
-		width: 120px;
-	}
-
-	.container {
-		height: 55px;
-		margin: 10px 25px;
-	}
-
-	.navbar-links {
-		gap: 30px;
-	}
-
-	.signup,
-	.login,
-	.search,
-	.community,
-	.collection,
-	.profile,
-  .dashboard {
-		font-size: 16px;
-	}
-
-	.logout-img {
-		width: 24px;
-	}
-}
-
-@include device(mobile) {
+@include dev(mobile) {
 	.logo,
 	.navbar {
 		display: none;
@@ -105,18 +45,16 @@ a img {
 
 	img {
 		width: 24px;
-		margin-right: 25px;
 		padding: 10px 0;
 
 		&.img {
 			width: 120px;
-			margin-left: 25px;
 		}
 	}
 
 	.container {
 		height: 55px;
-		margin: 10px 0;
+		margin: 10px 25px;
 		position: relative;
 	}
 
@@ -148,19 +86,89 @@ a img {
 	.community,
 	.collection,
 	.logout,
-  .dashboard {
+	.dashboard {
 		@include flex-row;
 		justify-content: center;
 		height: 50px;
 		width: 100%;
 
-		&:hover {
-			background-color: $blue-transparent;
-			color: $text-white;
+		@include dev(mobile-tablet) {
+			&:hover {
+				background-color: $blue-transparent;
+				color: $text-white;
+			}
 		}
 	}
+}
 
-	.login {
-		margin-right: 25px;
+@include dev(tablet) {
+	.menu {
+		display: none;
+	}
+
+	.logo-mobile,
+	.navbar {
+		display: block;
+	}
+
+	img.img {
+		width: 120px;
+	}
+
+	.navbar-links {
+		gap: 30px;
+	}
+
+	.signup,
+	.login,
+	.search,
+	.community,
+	.collection,
+	.profile,
+	.dashboard,
+	.logout,
+	.home {
+		font-size: 16px;
+	}
+
+	.logout {
+		cursor: pointer;
+	}
+
+	.logout-img {
+		width: 24px;
+	}
+}
+
+@include dev(laptop) {
+	.logo-mobile {
+		display: none;
+	}
+
+	.logo {
+		display: block;
+	}
+
+	img {
+		width: 139px;
+	}
+
+	.container {
+		height: 60px;
+		margin: 10px 50px;
+	}
+
+	.navbar-links {
+		gap: 40px;
+	}
+
+	.signup,
+	.login,
+	.search,
+	.community,
+	.collection,
+	.profile,
+	.dashboard {
+		font-size: 17px;
 	}
 }

@@ -1,43 +1,37 @@
 @import 'colors';
 
-$breakpoint-mobile-min: 375px;
-$breakpoint-mobile-max: 680px;
+$breakpoint-mobile: 390px;
+$breakpoint-mobile-max: 550px;
+$breakpoint-tablet: 800px;
+$breakpoint-laptop: 1150px;
+$breakpoint-desktop: 1400px;
 
-$breakpoint-tablet-min: 681px;
-$breakpoint-tablet-max: 1200px;
-
-$breakpoint-laptop: 1201px;
-$breakpoint-desktop-min: 1400px;
-
-@mixin device($breakpoint) {
-	@if $breakpoint == mobile {
-		@media (min-width: $breakpoint-mobile-min) and (max-width: $breakpoint-mobile-max) {
+@mixin dev($breakpoint) {
+	@if $breakpoint == desktop {
+		@media (min-width: $breakpoint-desktop) {
+			@content;
+		}
+	} @else if $breakpoint == laptop {
+		@media (min-width: $breakpoint-laptop) {
 			@content;
 		}
 	} @else if $breakpoint == tablet {
-		@media (min-width: $breakpoint-tablet-min) and (max-width: $breakpoint-tablet-max) {
+		@media (min-width: $breakpoint-tablet) {
 			@content;
 		}
-	} @else if $breakpoint == desktop {
-		@media (min-width: $breakpoint-desktop-min) {
+	} @else if $breakpoint == mobile-tablet {
+		@media (min-width: $breakpoint-mobile + 1px) and (max-width: $breakpoint-tablet - 1px) {
+			@content;
+		}
+	} @else if $breakpoint == mobile-max {
+		@media (min-width: $breakpoint-mobile-max) {
+			@content;
+		}
+	} @else if $breakpoint == mobile {
+		@media (min-width: $breakpoint-mobile) {
 			@content;
 		}
 	}
-  @else if $breakpoint == tablet-laptop {
-    @media (min-width: $breakpoint-tablet-min) and (max-width: $breakpoint-laptop) {
-      @content;
-    }
-  }
-  @else if $breakpoint == tablet-desktop {
-		@media (min-width: $breakpoint-tablet-min) {
-			@content;
-		}
-	}
-  @else if $breakpoint == laptop-desktop {
-    @media (min-width: $breakpoint-laptop) {
-      @content;
-    }
-  }
 }
 
 @mixin button-styles {

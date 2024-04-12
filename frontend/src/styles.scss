@@ -10,9 +10,10 @@
 input {
 	border: none;
 	outline: none;
-  &::placeholder{
-    user-select: none;
-  }
+
+	&::placeholder {
+		user-select: none;
+	}
 }
 
 button {
@@ -20,7 +21,7 @@ button {
 	border: none;
 	font: inherit;
 	color: inherit;
-  user-select: none;
+	user-select: none;
 }
 
 ul,
@@ -51,14 +52,14 @@ a {
 	font-style: normal;
 }
 
-@include device(tablet-desktop) {
+@include dev(tablet) {
 	.buttonDir {
 		@include button-styles;
 		margin-top: 75px;
 	}
 }
 
-@include device(mobile) {
+@include dev(mobile) {
 	.buttonDir {
 		@include button-styles;
 		margin-top: 50px;

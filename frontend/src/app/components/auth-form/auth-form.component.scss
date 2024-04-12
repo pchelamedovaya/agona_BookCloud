@@ -5,7 +5,7 @@
 	font-family: SemiboldFont, serif;
 	font-size: 24px;
 	margin-bottom: 40px;
-  user-select: none;
+	user-select: none;
 }
 
 .form-input {
@@ -17,6 +17,11 @@
 	&--password-repeat {
 		width: 100%;
 		font-family: RegularFont, serif;
+
+		&::selection {
+			background-color: $blue-transparent;
+			color: $text-white;
+		}
 	}
 
 	::placeholder {
@@ -37,10 +42,66 @@
 	}
 }
 
-@include device(tablet-desktop) {
+.button-submit,
+.mobile-button-eye,
+.button-eye {
+  cursor: pointer;
+}
+
+@include dev(mobile) {
+	.button-eye {
+		display: none;
+	}
+
+	.container {
+		@include flex-col;
+		justify-content: start;
+		margin-top: 145px;
+		caret-color: $text-gray-dark;
+	}
+
+	.title {
+		color: $blue;
+	}
+
+	.mobile-form-input--img {
+		margin-bottom: -10px;
+	}
+
+	.form-input {
+		height: 55px;
+		border-bottom: 1px solid $gray-placeholder;
+		margin-bottom: 8px;
+
+		&--email,
+		&--password,
+		&--password-repeat {
+			margin-bottom: -8px;
+			font-size: 17px;
+			color: $text-gray-dark;
+		}
+
+		::placeholder {
+			color: $text-gray;
+		}
+	}
+
+	.container-error {
+		&-message {
+			color: $text-gray;
+		}
+	}
+}
+
+@include dev(tablet) {
 	.mobile-button-eye {
 		display: none;
 	}
+
+  .button-eye {
+    display: block;
+  }
+
 	.container {
 		@include flex-col;
 		background-color: $background-form;
@@ -99,50 +160,5 @@
 
 	.mobile-wrapper-logo--img {
 		display: none;
-	}
-}
-
-@include device(mobile) {
-	.button-eye {
-		display: none;
-	}
-
-	.container {
-		@include flex-col;
-		justify-content: start;
-		margin-top: 145px;
-		caret-color: $text-gray-dark;
-	}
-
-	.title {
-		color: $blue;
-	}
-
-	.mobile-form-input--img {
-		margin-bottom: -10px;
-	}
-
-	.form-input {
-		height: 55px;
-		border-bottom: 1px solid $gray-placeholder;
-		margin-bottom: 8px;
-
-		&--email,
-		&--password,
-		&--password-repeat {
-			margin-bottom: -8px;
-			font-size: 17px;
-			color: $text-gray-dark;
-		}
-
-		::placeholder {
-			color: $text-gray;
-		}
-	}
-
-	.container-error {
-		&-message {
-			color: $text-gray;
-		}
 	}
 }

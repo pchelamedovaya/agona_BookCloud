@@ -9,6 +9,7 @@ a img {
 	@include flex-row;
 	justify-content: space-between;
 	user-select: none;
+  height: 55px;
 
 	&-menu-navbar {
 		position: fixed;
@@ -45,18 +46,7 @@ a img {
 }
 
 .menu-button {
-	cursor: pointer;
-
-	&.fixed {
-		position: fixed;
-    margin-top: 40px;
-	}
-}
-
-.img {
-	&.fixed {
-		position: fixed;
-	}
+  cursor: pointer;
 }
 
 @include dev(mobile) {
@@ -71,9 +61,12 @@ a img {
 
 		&.img {
 			width: 120px;
-			z-index: 20;
 		}
 	}
+
+  a {
+    z-index: 20;
+  }
 
 	.container {
 		margin: 10px 25px;

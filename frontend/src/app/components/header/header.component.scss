@@ -10,16 +10,16 @@ a img {
 	justify-content: space-between;
 	user-select: none;
 
-  &-menu-navbar {
-    position: fixed;
-    padding-top: 75px;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: $background;
-    z-index: 10;
-  }
+	&-menu-navbar {
+		position: fixed;
+		padding-top: 75px;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background-color: $background;
+		z-index: 10;
+	}
 }
 
 .navbar-links {
@@ -45,7 +45,18 @@ a img {
 }
 
 .menu-button {
-  cursor: pointer;
+	cursor: pointer;
+
+	&.fixed {
+		position: fixed;
+    margin-top: 40px;
+	}
+}
+
+.img {
+	&.fixed {
+		position: fixed;
+	}
 }
 
 @include dev(mobile) {
@@ -56,18 +67,15 @@ a img {
 
 	img {
 		width: 24px;
-		padding: 10px 0;
-    z-index: 20;
+		z-index: 20;
 
 		&.img {
 			width: 120px;
-      position: relative;
-      z-index: 20;
+			z-index: 20;
 		}
 	}
 
 	.container {
-		height: 55px;
 		margin: 10px 25px;
 		position: relative;
 	}

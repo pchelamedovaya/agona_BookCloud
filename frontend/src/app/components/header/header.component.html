@@ -3,7 +3,7 @@
 		<img src="assets/icons/logo-dark.svg" alt="Logo" />
 	</a>
 	<a class="logo-mobile" routerLink="home">
-		<img class="img" src="../../../assets/icons/logo-dark.svg" alt="Logo" />
+		<img [ngClass]="{'fixed': isMenuOpen}" class="img" src="../../../assets/icons/logo-dark.svg" alt="Logo" />
 	</a>
 
 	<nav class="navbar" *ngIf="this.authService.isAuthSignal(); else isNotAuth">
@@ -65,7 +65,7 @@
 		(click)="toggleMenu()"
 	>
 		<ng-container *ngIf="isMenuOpen; else closeMenu">
-			<img class="menu-button" src="assets/icons/close.svg" alt="Close menu" />
+			<img [ngClass]="{'fixed': isMenuOpen}" class="menu-button" src="assets/icons/close.svg" alt="Close menu" />
 		</ng-container>
 		<ng-template #closeMenu>
 			<img class="menu-button" src="assets/icons/menu.svg" alt="Menu" />

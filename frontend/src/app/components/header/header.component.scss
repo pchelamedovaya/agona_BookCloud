@@ -9,6 +9,17 @@ a img {
 	@include flex-row;
 	justify-content: space-between;
 	user-select: none;
+
+  &-menu-navbar {
+    position: fixed;
+    padding-top: 75px;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: $background;
+    z-index: 10;
+  }
 }
 
 .navbar-links {
@@ -46,9 +57,12 @@ a img {
 	img {
 		width: 24px;
 		padding: 10px 0;
+    z-index: 20;
 
 		&.img {
 			width: 120px;
+      position: relative;
+      z-index: 20;
 		}
 	}
 
@@ -70,7 +84,6 @@ a img {
 			@include flex-row;
 			justify-content: center;
 			position: absolute;
-			top: 65px;
 			width: 100%;
 
 			& ul,

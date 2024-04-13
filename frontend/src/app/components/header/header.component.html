@@ -13,7 +13,7 @@
 					>Search</a
 				>
 			</li>
-			<li  *ngIf="userRole === 'USER'">
+			<li *ngIf="userRole === 'USER'">
 				<a
 					class="community"
 					routerLink="community"
@@ -65,66 +65,71 @@
 		(click)="toggleMenu()"
 	>
 		<ng-container *ngIf="isMenuOpen; else closeMenu">
-			<img class='menu-button' src="assets/icons/close.svg" alt="Close menu" />
+			<img class="menu-button" src="assets/icons/close.svg" alt="Close menu" />
 		</ng-container>
 		<ng-template #closeMenu>
-			<img class='menu-button' src="assets/icons/menu.svg" alt="Menu" />
+			<img class="menu-button" src="assets/icons/menu.svg" alt="Menu" />
 		</ng-template>
-		<nav class="menu-navbar" *ngIf="isMenuOpen">
-			<ul>
-				<li *ngIf="userRole === 'ADMIN'">
-					<a
-						class="dashboard"
-						routerLink="dashboard"
-						routerLinkActive="dashboard-active"
-						>Dashboard</a
-					>
-				</li>
-				<li>
-					<a
-						class="profile"
-						routerLink="profile"
-						routerLinkActive="profile-active"
-						>Profile</a
-					>
-				</li>
-				<li>
-					<a class="home" routerLink="home" routerLinkActive="home-active"
-						>Home</a
-					>
-				</li>
-				<li>
-					<a class="search" routerLink="search" routerLinkActive="search-active"
-						>Search</a
-					>
-				</li>
-				<li>
-					<a
-						class="community"
-						routerLink="community"
-						routerLinkActive="community-active"
-						>Community</a
-					>
-				</li>
-				<li>
-					<a
-						class="collection"
-						routerLink="collection"
-						routerLinkActive="collection-active"
-						>Collection</a
-					>
-				</li>
-				<li>
-					<a
-						(click)="logoutHandler()"
-						class="logout"
-						routerLink="logout"
-						routerLinkActive="logout-active"
-						>Log out</a
-					>
-				</li>
-			</ul>
-		</nav>
+		<div class="container-menu-navbar" *ngIf="isMenuOpen">
+			<nav class="menu-navbar">
+				<ul>
+					<li *ngIf="userRole === 'ADMIN'">
+						<a
+							class="dashboard"
+							routerLink="dashboard"
+							routerLinkActive="dashboard-active"
+							>Dashboard</a
+						>
+					</li>
+					<li>
+						<a
+							class="profile"
+							routerLink="profile"
+							routerLinkActive="profile-active"
+							>Profile</a
+						>
+					</li>
+					<li>
+						<a class="home" routerLink="home" routerLinkActive="home-active"
+							>Home</a
+						>
+					</li>
+					<li>
+						<a
+							class="search"
+							routerLink="search"
+							routerLinkActive="search-active"
+							>Search</a
+						>
+					</li>
+					<li>
+						<a
+							class="community"
+							routerLink="community"
+							routerLinkActive="community-active"
+							>Community</a
+						>
+					</li>
+					<li>
+						<a
+							class="collection"
+							routerLink="collection"
+							routerLinkActive="collection-active"
+							>Collection</a
+						>
+					</li>
+					<li>
+						<a
+							(click)="logoutHandler()"
+							class="logout"
+							routerLink="logout"
+							routerLinkActive="logout-active"
+							>Log out</a
+						>
+					</li>
+				</ul>
+			</nav>
+		</div>
 	</div>
 
 	<ng-template #isNotAuth>

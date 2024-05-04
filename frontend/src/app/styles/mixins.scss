@@ -39,6 +39,7 @@ $breakpoint-desktop: 1400px;
 	border-radius: 13px;
 	font-size: 17px;
 	font-family: SemiboldFont, serif;
+	cursor: pointer;
 
 	&--primary {
 		background-color: $background-dark;

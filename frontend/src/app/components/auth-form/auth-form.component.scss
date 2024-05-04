@@ -13,6 +13,7 @@
 	width: 285px;
 
 	&--email,
+  &--login,
 	&--password,
 	&--password-repeat {
 		width: 100%;
@@ -38,8 +39,14 @@
 	&-message {
 		font-family: RegularFont, serif;
 		font-size: 14px;
-		color: $text-gray;
+    line-height: 20px;
+    user-select: none;
+    color: $errors;
 	}
+}
+
+.button-submit {
+  margin-bottom: 24px;
 }
 
 .button-submit,
@@ -56,7 +63,7 @@
 	.container {
 		@include flex-col;
 		justify-content: start;
-		margin-top: 145px;
+		margin-top: 110px;
 		caret-color: $text-gray-dark;
 	}
 
@@ -74,6 +81,7 @@
 		margin-bottom: 8px;
 
 		&--email,
+    &--login,
 		&--password,
 		&--password-repeat {
 			margin-bottom: -8px;
@@ -82,12 +90,6 @@
 		}
 
 		::placeholder {
-			color: $text-gray;
-		}
-	}
-
-	.container-error {
-		&-message {
 			color: $text-gray;
 		}
 	}
@@ -109,7 +111,7 @@
 		border-radius: 13px;
 		justify-content: start;
 		min-width: 400px;
-		margin-top: 130px;
+		margin-top: 110px;
 		caret-color: $white-placeholder;
 	}
 
@@ -130,6 +132,7 @@
 		}
 
 		&--email,
+    &--login,
 		&--password,
 		&--password-repeat {
 			background-color: $background-form;
@@ -144,6 +147,7 @@
 	}
 
 	.wrapper-email,
+  .wrapper-login,
 	.wrapper-password,
 	.wrapper-password-repeat {
 		background-color: $background-form;
@@ -154,7 +158,6 @@
 
 		&-message {
 			background-color: $background-form;
-			color: $white-transparent;
 		}
 	}
 

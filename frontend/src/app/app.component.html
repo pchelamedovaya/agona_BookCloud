@@ -1,9 +1,13 @@
 <main>
-	<app-header />
+  <div>
+    <app-header />
 
-<!--  <app-icon name='open-eye-light'></app-icon>-->
+    <!--  <app-icon [width]='140' [height]='50' name='logo'></app-icon>-->
 
-	<div>
-		<router-outlet />
-	</div>
+    <div>
+      <router-outlet />
+    </div>
+  </div>
+
+  <app-footer *ngIf="!isHiddenRoute"></app-footer>
 </main>

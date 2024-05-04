@@ -10,7 +10,7 @@ import { HeaderComponent } from './components/header/header.component'
 import { AuthFormComponent } from './components/auth-form/auth-form.component'
 import { NgOptimizedImage } from '@angular/common'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'
-import { HttpClientModule } from '@angular/common/http'
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http'
 import { ButtonDirective } from './directives/button/button.directive'
 import { IconComponent } from './components/icon/icon.component'
 import { SearchComponent } from './pages/search/search.component'
@@ -20,6 +20,9 @@ import { ProfileComponent } from './pages/profile/profile.component'
 import { DashboardComponent } from './pages/dashboard/dashboard.component'
 import { BookCardComponent } from './components/book-card/book-card.component'
 import { UserCardComponent } from './components/user-card/user-card.component'
+import { AuthInterceptor } from './interceptors/auth.interceptor'
+import { BookDetailComponent } from './pages/book-detail/book-detail.component';
+import { FooterComponent } from './components/footer/footer.component'
 
 @NgModule({
 	declarations: [
@@ -37,7 +40,9 @@ import { UserCardComponent } from './components/user-card/user-card.component'
 		ProfileComponent,
 		DashboardComponent,
 		BookCardComponent,
-		UserCardComponent
+		UserCardComponent,
+		BookDetailComponent,
+  FooterComponent
 	],
 	imports: [
 		BrowserModule,
@@ -47,7 +52,13 @@ import { UserCardComponent } from './components/user-card/user-card.component'
 		ReactiveFormsModule,
 		HttpClientModule
 	],
-	providers: [],
+	providers: [
+		{
+			provide: HTTP_INTERCEPTORS,
+			useClass: AuthInterceptor,
+			multi: true
+		}
+	],
 	bootstrap: [AppComponent]
 })
 export class AppModule {}

@@ -1,10 +1,10 @@
-<form class="container" [formGroup]="userData" (ngSubmit)="onSubmit()">
+<form autocomplete="off" class="container" [formGroup]="userData" (ngSubmit)="onSubmit()">
 	<div class="title">
 		{{ isRegistrationForm ? 'Take the First Step' : 'Access your Account' }}
 	</div>
 
 	<div class="wrapper-email">
-		<label class="form-input" for="email">
+		<label *ngIf="isRegistrationForm" class="form-input" for="email">
 			<input
 				required
 				formControlName="email"
@@ -37,6 +37,41 @@
 		</ng-container>
 	</div>
 
+  <div class="wrapper-login">
+    <label class="form-input" for="login">
+      <input
+        required
+        formControlName="login"
+        class="form-input--login"
+        placeholder="Login"
+        type="text"
+        id="login"
+      />
+    </label>
+    <ng-container
+      class="container-error"
+      *ngIf="
+				(userData.controls['login'].invalid &&
+					userData.controls['login'].dirty) ||
+				userData.controls['login'].touched
+			"
+    >
+      <div
+        class="container-error-message"
+        *ngIf="userData.controls['login'].hasError('required')"
+      >
+        Login is required
+      </div>
+      <div
+        class="container-error-message"
+        *ngIf="userData.controls['login'].hasError('pattern')"
+      >
+        Login can consist only of letters, numbers, <br>
+        optionally underscores
+      </div>
+    </ng-container>
+  </div>
+
 	<div class="wrapper-password">
 		<label class="form-input" for="password">
 			<input
@@ -47,6 +82,7 @@
 				name="password"
 				id="password"
 				placeholder="Password"
+        (input)="removeErrorMessage()"
 			/>
 			<button
 				class="button-eye"
@@ -195,4 +231,8 @@
 	>
 		{{ isRegistrationForm ? 'Join Now' : 'Log in' }}
 	</button>
+
+  <ng-container class="container-error" *ngIf="errorMessage">
+    <div class="container-error-message" >{{ errorMessage }}</div>
+  </ng-container>
 </form>

@@ -10,6 +10,7 @@ import { ProfileComponent } from './pages/profile/profile.component'
 import { AuthGuard } from './guards/auth.guard'
 import { DashboardComponent } from './pages/dashboard/dashboard.component'
 import { AdminGuard } from './guards/admin.guard'
+import { BookDetailComponent } from './pages/book-detail/book-detail.component'
 
 const routes: Routes = [
 	{
@@ -20,12 +21,12 @@ const routes: Routes = [
 	{
 		path: 'signup',
 		component: SignupComponent,
-    title: 'Sign up'
+		title: 'Sign up'
 	},
 	{
 		path: 'login',
 		component: LoginComponent,
-    title: 'Log in'
+		title: 'Log in'
 	},
 	{
 		path: 'search',
@@ -55,7 +56,11 @@ const routes: Routes = [
 		path: 'dashboard',
 		component: DashboardComponent,
 		title: 'Dashboard',
-    canActivate: [AuthGuard(), AdminGuard()]
+		canActivate: [AuthGuard(), AdminGuard()]
+	},
+	{
+		path: 'book/:id',
+		component: BookDetailComponent
 	},
 	{
 		path: '**',

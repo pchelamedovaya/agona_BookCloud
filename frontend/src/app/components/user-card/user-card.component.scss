@@ -10,22 +10,25 @@
 	border-radius: 15px;
 }
 
-.name,
-.email,
-.role,
-.status {
+.field {
 	font-family: SemiboldFont, serif;
 	color: $text-gray-dark;
 	letter-spacing: 1.25px;
 	user-select: none;
 	line-height: 26px;
 	margin-bottom: 5px;
+  @include flex-row;
+}
+
+.label {
+  min-width: 70px;
 }
 
 .button-block {
 	margin: 20px 0 0 0;
 	padding: 8px 30px;
 	font-size: 14px;
+  width: 110px;
 }
 
 @include dev(tablet) {

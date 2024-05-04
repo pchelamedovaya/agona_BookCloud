@@ -1,14 +1,27 @@
 <div class="container">
 	<div class="info">
-		<div class="name">Name: {{ user.firstname }} {{ user.lastname }}</div>
-		<div class="email">Email: {{ user.email }}</div>
-		<div class="role">Role: {{ user.role | uppercase }}</div>
-		<div class="status">
-			Activity status:
-			{{ user.isActive ? ('active' | uppercase) : ('inactive' | uppercase) }}
-		</div>
+    <div class="field">
+      <div class="label">Name:</div>
+      <div class="value">{{ user.firstName }} {{ user.lastName }}</div>
+    </div>
+    <div class="field">
+      <div class="label">Email:</div>
+      <div class="value">{{ user.email }}</div>
+    </div>
+    <div class="field">
+      <div class="label">Login:</div>
+      <div class="value">{{ user.login }}</div>
+    </div>
+    <div class="field">
+      <div class="label">Role:</div>
+      <div class="value">{{ user.role | uppercase }}</div>
+    </div>
+    <div class="field">
+      <div class="label">State:</div>
+      <div class="value">{{ user.state === 'ACTIVE' ? 'ACTIVE' : 'BANNED' }}</div>
+    </div>
 	</div>
-	<button class="button-block" appButton>
-		{{ user.isActive ? 'Block' : 'Unlock' }}
+	<button class="button-block" appButton (click)="toggleState(user.id)">
+		{{ user.state === 'ACTIVE' ? 'Block' : 'Unlock' }}
 	</button>
 </div>

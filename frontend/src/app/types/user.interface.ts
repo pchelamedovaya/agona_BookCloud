@@ -1,19 +1,22 @@
 export interface IAuthUser {
 	email: string
+  login: string
 	password: string
 }
 
 export interface IAuthData {
-	token: string
+  accessToken: string
+  refreshToken: string
   role: string
 }
 
 export interface IUser {
   id: number
-  firstname: string
-  lastname: string
+  login: string
+  firstName: string
+  lastName: string
   about: string
   email: string
   role: string
-  isActive: boolean
+  state: string
 }

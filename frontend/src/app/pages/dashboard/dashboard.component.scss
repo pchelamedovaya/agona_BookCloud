@@ -4,6 +4,7 @@
   @include flex-col;
   display: grid;
   align-items: start;
+  padding-bottom: 25px;
 }
 
 @include dev(mobile) {

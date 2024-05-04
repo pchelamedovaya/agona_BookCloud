@@ -1,74 +1,59 @@
 package com.example.backend.service;
 
-import com.example.backend.dto.EmailPasswordDto;
-import com.example.backend.dto.AuthDataDto;
+
 import com.example.backend.dto.UserDto;
-import com.example.backend.entity.AuthDataEntity;
 import com.example.backend.entity.UserEntity;
-import com.example.backend.repository.AuthDataRepository;
 import com.example.backend.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.UUID;
-import java.util.function.Supplier;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
 public class UserService {
 
-    private final PasswordEncoder passwordEncoder;
     private final UserRepository userRepository;
-    private final AuthDataRepository authDataRepository;
-
-    public UserEntity addUser(UserDto userDto) {
-        UserEntity newUser = UserEntity.builder()
-                .hashPassword(passwordEncoder.encode(userDto.getPassword()))
-                .email(userDto.getEmail())
-                .role(UserEntity.Role.USER)
-                .state(UserEntity.State.ACTIVE)
-                .build();
-        if (userRepository.findByEmail(newUser.getEmail()).isPresent()) {
-            throw new IllegalArgumentException("User with this email already exist");
-        }
-        return userRepository.save(newUser);
-    }
-
-    public AuthDataDto login(EmailPasswordDto emailPassword) throws Throwable {
-        UserEntity user = userRepository.findByEmail(emailPassword.getEmail())
-                .orElseThrow((Supplier<Throwable>) () -> new UsernameNotFoundException("User not found"));
-        if (passwordEncoder.matches(emailPassword.getPassword(), user.getHashPassword())) {
-            String tokenValue = UUID.randomUUID().toString();
-            AuthDataEntity token = AuthDataEntity.builder()
-                    .token(tokenValue)
-                    .user(user)
-                    .build();
-
-            authDataRepository.save(token);
-
-            return AuthDataDto.builder()
-                    .token(tokenValue)
-                    .role(user.getRole())
-                    .build();
-
-        } else {
-            throw new UsernameNotFoundException("Invalid username or password");
-        }
-    }
 
     public List<UserDto> getAllUsers() {
-        return userRepository.findAll()
-                .stream()
+        List<UserEntity> allUsers = userRepository.findAllByOrderByIdDesc();
+
+        return allUsers.stream()
                 .map(it -> UserDto.builder()
+                        .id(it.getId())
                         .firstName(it.getFirstName())
                         .lastName(it.getLastName())
                         .about(it.getAbout())
+                        .login(it.getLogin())
                         .email(it.getEmail())
+                        .role(it.getRole())
+                        .state(it.getState())
                         .build())
                 .toList();
+    }
+
+    public UserDto toggleUserState(Long id) {
+        return userRepository.findById(id)
+                .map(user -> {
+                    if (user.getState() == UserEntity.State.ACTIVE) {
+                        user.setState(UserEntity.State.BANNED);
+                    } else {
+                        user.setState(UserEntity.State.ACTIVE);
+                    }
+                    userRepository.save(user);
+                    return UserDto.builder()
+                            .id(user.getId())
+                            .firstName(user.getFirstName())
+                            .lastName(user.getLastName())
+                            .about(user.getAbout())
+                            .login(user.getLogin())
+                            .email(user.getEmail())
+                            .role(user.getRole())
+                            .state(user.getState())
+                            .build();
+                })
+                .orElse(null);
     }
 
     public UserDto getUserById(Long id) {
@@ -81,5 +66,9 @@ public class UserService {
                         .about(it.getAbout())
                         .build())
                 .get();
+    }
+
+    public Optional<UserEntity> findByLogin(String login) {
+        return userRepository.findByLogin(login);
     }
 }

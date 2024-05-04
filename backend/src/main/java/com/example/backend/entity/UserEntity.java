@@ -1,8 +1,10 @@
 package com.example.backend.entity;
 
-import jakarta.persistence.*;
+
 import lombok.*;
 import org.springframework.data.annotation.Id;
+
+import javax.persistence.*;
 
 @Entity
 @Getter
@@ -11,11 +13,12 @@ import org.springframework.data.annotation.Id;
 @AllArgsConstructor
 @Builder
 public class UserEntity {
-    @jakarta.persistence.Id
     @Id
+    @javax.persistence.Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    private String login;
     private String firstName;
     private String lastName;
     private String about;
@@ -24,7 +27,7 @@ public class UserEntity {
     private String hashPassword;
 
     @Enumerated(value = EnumType.STRING)
-    private State state;
+    private State state = State.ACTIVE;
 
     @Enumerated(value = EnumType.STRING)
     private Role role = Role.USER;

@@ -1,4 +1,4 @@
-<div class="container-book-card">
+<div class="container-book-card" [routerLink]="['/book', book.id]">
 	<img [src]="book.cover" class="cover" alt="Book cover" />
 	<div class="content">
 		<div class="title">{{ book.title }}</div>

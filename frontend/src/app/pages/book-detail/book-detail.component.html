@@ -1,0 +1,41 @@
+<div class="main">
+	<div class="container">
+		<div class="book">
+			<img class="cover" alt="Book cover" />
+			<button (click)="toggleButton()" class="heart-container">
+				<img
+					*ngIf="!buttonPressed"
+					src='../../../assets/icons/heart.svg'
+					class="heart"
+					alt="Heart"
+				/>
+				<img
+					*ngIf="buttonPressed"
+					src='../../../assets/icons/heart-filled.svg'
+					class="heart-filled"
+					alt="Heart filled"
+				/>
+			</button>
+		</div>
+		<div class="book-info">
+			<div class="title">Master and Margarita</div>
+			<div class="author">Bulgakov M.</div>
+			<div class="description">
+				<div class="description-title">Description</div>
+				<div class="description-text">
+					Сat Behemoth and Woland, have not heard of Pontius Pilate. <br />
+					She was carrying disgusting, disturbing yellow flowers in her hands.
+					<br />
+					— Do you like my flowers? <br />
+					— No. <br />
+					— You don’t like flowers at all? <br />
+					“No, I love flowers, just not like this,” I said...
+				</div>
+				<div class="buttons">
+					<button appButton class="button-read">Read</button>
+					<button appButton class="button-join">Join chat</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

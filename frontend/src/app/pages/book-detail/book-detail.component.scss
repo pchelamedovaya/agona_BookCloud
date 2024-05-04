@@ -1,0 +1,145 @@
+@import '../../styles/mixins';
+@import '../../styles/colors';
+
+.container {
+	justify-items: center;
+}
+
+.heart,
+.heart-filled {
+	background-color: $background-dark;
+	cursor: pointer;
+	width: 32px;
+
+	&-container {
+		position: absolute;
+		top: 0;
+		right: 0;
+		background-color: $background-dark;
+		clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 50% 75%, 0% 100%);
+		width: 63px;
+		height: 88px;
+	}
+}
+
+.heart-filled {
+	margin-bottom: 16px;
+}
+
+.heart {
+	margin-bottom: 14px;
+}
+
+.book {
+	@include flex-row;
+	position: relative;
+	width: 100%;
+	justify-content: center;
+	max-width: 420px;
+}
+
+.cover {
+	border-radius: 13px 0 13px 13px;
+	width: 100%;
+	padding-top: calc(4 / 3 * 100%);
+	background: $text-gray-dark-transparent;
+	object-fit: cover;
+}
+
+.title,
+.author {
+	font-family: SemiboldFont, serif;
+	color: $text-gray-dark;
+	user-select: none;
+	font-size: 22px;
+	line-height: 30px;
+	margin-bottom: 5px;
+}
+
+.description {
+	&-title {
+		font-family: RegularFont, serif;
+		color: $text-gray-dark;
+		user-select: none;
+		font-size: 22px;
+		line-height: 36px;
+		margin-top: 30px;
+		margin-bottom: 25px;
+		border-bottom: 1px $background-form solid;
+	}
+
+	&-text {
+		font-family: RegularFont, serif;
+		color: $text-gray-dark;
+		user-select: none;
+		font-size: 18px;
+		line-height: 30px;
+	}
+}
+
+.buttons {
+	@include flex-row;
+	justify-content: center;
+	gap: 40px;
+}
+
+@include dev(mobile) {
+	.main {
+		margin-bottom: 25px;
+	}
+	.title,
+	.author {
+		display: flex;
+		justify-content: center;
+	}
+
+	.container {
+		display: grid;
+		grid-template-rows: auto;
+		align-items: start;
+		justify-content: center;
+		margin: 35px 25px 0;
+	}
+	.buttons {
+		margin-top: -25px;
+	}
+	.cover {
+		margin-bottom: 20px;
+	}
+}
+
+@include dev(tablet) {
+	.main {
+		margin: 0 25px;
+	}
+	.container {
+		max-width: 875px;
+		margin: 90px auto 0;
+	}
+	.title,
+	.author {
+		display: flex;
+		justify-content: start;
+		font-size: 26px;
+		line-height: 35px;
+	}
+	.author {
+		font-family: RegularFont, serif;
+	}
+	.description-title {
+		display: none;
+	}
+	.container {
+		grid-template-columns: repeat(2, 1fr);
+		gap: 35px;
+	}
+	.description {
+		&-text {
+			margin-top: 25px;
+		}
+	}
+	.buttons {
+		justify-content: start;
+		margin-top: -10px;
+	}
+}

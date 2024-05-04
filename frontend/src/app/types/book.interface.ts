@@ -1,7 +1,8 @@
 export interface IBook {
   id: number
-  cover: string
   title: string
   author: string
   description: string
+  cover: string
+  reading_link: string
 }

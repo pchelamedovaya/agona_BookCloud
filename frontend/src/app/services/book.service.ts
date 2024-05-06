@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core'
-import { HttpClient } from '@angular/common/http'
-import { Observable } from 'rxjs'
+import { HttpClient, HttpParams } from '@angular/common/http'
+import { map, Observable } from 'rxjs'
 import { IBook } from '../types/book.interface'
 
 @Injectable({
@@ -9,7 +9,21 @@ import { IBook } from '../types/book.interface'
 export class BookService {
 	constructor(private readonly http: HttpClient) {}
 
-	getBooks(): Observable<IBook[]> {
+	getAllBooks(): Observable<IBook[]> {
 		return this.http.get<IBook[]>(`books`)
+	}
+
+	getBooksForRecommendations(): Observable<IBook[]> {
+		return this.http
+			.get<any>(`books`, {
+				params: new HttpParams().append('size', 12).append('page', 0)
+			})
+			.pipe(map(response => response.data))
+	}
+
+	getBook(id: number): Observable<IBook> {
+		return this.http
+			.get<any>(`books/${id}`)
+			.pipe(map(response => response.book))
 	}
 }

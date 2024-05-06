@@ -1,0 +1,111 @@
+@import 'colors';
+@import 'mixins';
+
+img {
+	vertical-align: middle;
+}
+
+.info {
+	max-width: 1550px;
+}
+
+.container {
+	@include flex-col;
+
+	&-search {
+		@include flex-row;
+		justify-content: space-between;
+		background: $background-dark;
+		border-radius: 13px;
+		padding: 0 20px;
+	}
+}
+
+.search {
+	&-input {
+		width: calc(100% - 40px);
+		background: $background-dark;
+		color: $text-white;
+		font-family: RegularFont, serif;
+
+		&::selection {
+			background-color: $blue-transparent;
+		}
+
+		&::placeholder {
+			color: $white-placeholder;
+			font-family: RegularFont, serif;
+		}
+
+		&:focus::placeholder {
+			opacity: 0;
+			transition: opacity 0.3s ease;
+		}
+	}
+
+	&-button {
+		background: $background-dark;
+	}
+
+	&-image {
+		background: $background-dark;
+	}
+}
+
+.search-button {
+	cursor: pointer;
+}
+
+@include dev(mobile) {
+	.container {
+		margin-top: 25px;
+	}
+
+	.container-search {
+		height: 42px;
+		margin: 0 25px;
+
+		&-input {
+			font-size: 14px;
+
+			&::placeholder {
+				font-size: 14px;
+			}
+		}
+	}
+}
+
+@include dev(tablet) {
+	.container {
+		margin-top: 40px;
+	}
+
+	.container-search {
+		height: 45px;
+		max-width: 550px;
+
+		&-input {
+			font-size: 16px;
+
+			&::placeholder {
+				font-size: 16px;
+			}
+		}
+	}
+}
+
+@include dev(laptop) {
+	.container-search {
+		max-width: 600px;
+		height: 50px;
+		margin: 0 50px;
+
+		&-input {
+			font-size: 18px;
+
+			&::placeholder {
+				font-size: 18px;
+			}
+		}
+	}
+}

@@ -1,0 +1,15 @@
+<div class="books-container">
+	<div class="books-wrapper">
+		<div class="books-title">
+			{{isRecommendationRoutes ? 'Based on your preferences' : 'Recommendations'}}
+		</div>
+		<button appButton class="books-button">View all List</button>
+	</div>
+	<div class="books-list">
+		<app-book-card
+			*ngFor="let book of books | async"
+			[book]="book"
+		></app-book-card>
+	</div>
+	<button appButton class="books-button-mobile">View all List</button>
+</div>

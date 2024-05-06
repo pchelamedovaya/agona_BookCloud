@@ -140,42 +140,6 @@ img {
 	background: $background-light;
 }
 
-.preferences {
-	&-container {
-		background: $background-form;
-		border-radius: 15px;
-	}
-
-	&-wrapper {
-		@include flex-row;
-		justify-content: space-between;
-		background: $background-form;
-		border-bottom: 1px $background-dark solid;
-		margin-bottom: 50px;
-	}
-
-	&-title {
-		font-family: SemiboldFont, serif;
-		background: $background-form;
-		color: $text-white;
-		line-height: 1.15;
-		letter-spacing: 1.25px;
-	}
-
-	&-button {
-		margin: 0;
-		cursor: pointer;
-	}
-
-	&-button-mobile {
-		cursor: pointer;
-	}
-}
-
-.books-list {
-	background: $background-form;
-}
-
 @include dev(mobile) {
 	.container {
 		margin: 25px 25px 0;
@@ -198,36 +162,6 @@ img {
 
 			&::placeholder {
 				font-size: 14px;
-			}
-		}
-	}
-
-	.preferences {
-		&-container {
-			width: calc(100% - 50px);
-			margin: 40px 25px 0;
-			padding: 15px 20px 30px;
-		}
-
-		&-wrapper {
-			padding-bottom: 8px;
-			margin-bottom: 25px;
-		}
-
-		&-title {
-			font-size: 20px;
-			line-height: 26px;
-		}
-
-		&-button {
-			display: none;
-
-			&-mobile {
-				width: 100%;
-				padding-top: 8px;
-				padding-bottom: 8px;
-				font-size: 14px;
-				margin-top: 20px;
 			}
 		}
 	}
@@ -300,21 +234,6 @@ img {
 			font-size: 16px;
 			height: 26px;
 		}
-	}
-
-	.books-list {
-		@include flex-col;
-		column-gap: 20px;
-		row-gap: 30px;
-	}
-}
-
-@include dev(mobile-max) {
-	.books-list {
-		display: grid;
-		grid-template-columns: repeat(2, 1fr);
-		column-gap: 20px;
-		row-gap: 30px;
 	}
 }
 
@@ -420,30 +339,6 @@ img {
 		}
 	}
 
-	.preferences {
-		&-container {
-			width: calc(100% - 50px);
-			margin: 50px 25px 0;
-			padding: 35px 45px;
-		}
-
-		&-wrapper {
-			padding-bottom: 10px;
-		}
-
-		&-title {
-			font-size: 24px;
-		}
-
-		&-button {
-			display: block;
-		}
-
-		&-button-mobile {
-			display: none;
-		}
-	}
-
 	.container-category {
 		width: calc(100% - 50px);
 		margin: 45px 25px 0;
@@ -452,14 +347,6 @@ img {
 			width: 85px;
 			border-top: 4px $text-gray-dark solid;
 		}
-	}
-
-	.books-list {
-		display: grid;
-		grid-template-columns: repeat(2, 1fr);
-		row-gap: 30px;
-		column-gap: 45px;
-		align-items: start;
 	}
 }
 
@@ -599,44 +486,13 @@ img {
 	.genre-journalism,
 	.genre-detective,
 	.genre-biography {
-		font-size: 22px;
-		line-height: 30px;
+    font-size: 22px;
+    line-height: 30px;
 
-		a {
-			font-size: 16px;
-			height: 26px;
-			margin-top: 12px;
-		}
-	}
-
-	.preferences {
-		&-container {
-			max-width: 1550px;
-			width: calc(100% - 100px);
-			margin: 50px 50px 0;
-			padding: 35px 70px;
-		}
-
-		&-wrapper {
-			padding-bottom: 12px;
-		}
-
-		&-title {
-			font-size: 30px;
-		}
-
-		&-button-mobile {
-			display: none;
-		}
-	}
-
-	.books-list {
-		grid-template-columns: repeat(3, 1fr);
-	}
-}
-
-@include dev(desktop) {
-	.books-list {
-		grid-template-columns: repeat(4, 1fr);
-	}
+    a {
+      font-size: 16px;
+      height: 26px;
+      margin-top: 12px;
+    }
+  }
 }

@@ -1,0 +1,152 @@
+@import "mixins";
+@import "colors";
+
+.books {
+  &-list {
+    background: $background-form;
+  }
+
+  &-container {
+    background: $background-form;
+    border-radius: 15px;
+  }
+
+  &-wrapper {
+    @include flex-row;
+    justify-content: space-between;
+    background: $background-form;
+    border-bottom: 1px $background-dark solid;
+    margin-bottom: 50px;
+  }
+
+  &-title {
+    font-family: SemiboldFont, serif;
+    background: $background-form;
+    color: $text-white;
+    line-height: 1.15;
+    letter-spacing: 1.25px;
+  }
+
+  &-button {
+    margin: 0;
+    cursor: pointer;
+  }
+
+  &-button-mobile {
+    cursor: pointer;
+  }
+}
+
+@include dev(mobile) {
+  .books {
+    &-list {
+      @include flex-col;
+      column-gap: 20px;
+      row-gap: 30px;
+    }
+
+    &-container {
+      width: calc(100% - 50px);
+      margin: 40px 25px 0;
+      padding: 15px 20px 30px;
+    }
+
+    &-wrapper {
+      padding-bottom: 8px;
+      margin-bottom: 25px;
+    }
+
+    &-title {
+      font-size: 20px;
+      line-height: 26px;
+    }
+
+    &-button {
+      display: none;
+
+      &-mobile {
+        width: 100%;
+        padding-top: 8px;
+        padding-bottom: 8px;
+        font-size: 14px;
+        margin-top: 20px;
+      }
+    }
+  }
+}
+
+@include dev(mobile-max) {
+  .books-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 20px;
+    row-gap: 30px;
+  }
+}
+
+@include dev(tablet) {
+  .books {
+    &-list {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      row-gap: 30px;
+      column-gap: 45px;
+      align-items: start;
+    }
+
+    &-container {
+      width: calc(100% - 50px);
+      margin: 50px 25px 0;
+      padding: 35px 45px;
+    }
+
+    &-wrapper {
+      padding-bottom: 10px;
+    }
+
+    &-title {
+      font-size: 24px;
+    }
+
+    &-button {
+      display: block;
+    }
+
+    &-button-mobile {
+      display: none;
+    }
+  }
+}
+
+@include dev(laptop) {
+  .books {
+    &-list {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    &-container {
+      max-width: 1550px;
+      width: calc(100% - 100px);
+      margin: 50px 50px 0;
+      padding: 35px 70px;
+    }
+
+    &-wrapper {
+      padding-bottom: 12px;
+    }
+
+    &-title {
+      font-size: 30px;
+    }
+
+    &-button-mobile {
+      display: none;
+    }
+  }
+}
+
+@include dev(desktop) {
+  .books-list {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}

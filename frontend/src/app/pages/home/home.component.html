@@ -1,6 +1,6 @@
 <main>
-	<div class="container">
-		<div class="title">
+  <div class="container">
+    <div class="title">
 			Reading Is<br />
 			Fascinating
 		</div>
@@ -13,7 +13,7 @@
 		</div>
 		<div class="search">
 			<input class="search-input" type="text" placeholder="Type here.." />
-			<button class="search-button">
+			<button (click)="redirectToSearch()" class="search-button">
 				<img class="search-img" src="assets/icons/search.svg" alt="Search" />
 			</button>
 		</div>
@@ -36,14 +36,5 @@
 			<div class="genre-biography">Biography & Memoirs<a>Show more</a></div>
 		</div>
 	</div>
-	<div class="preferences-container">
-		<div class="preferences-wrapper">
-			<div class="preferences-title">Based on your preferences</div>
-			<button appButton class="preferences-button">View all List</button>
-		</div>
-		<div class="books-list">
-      <app-book-card *ngFor="let book of books | async" [book]="book"></app-book-card>
-		</div>
-		<button appButton class="preferences-button-mobile">View all List</button>
-	</div>
+  <app-recommendations></app-recommendations>
 </main>

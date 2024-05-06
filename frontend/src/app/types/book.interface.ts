@@ -4,5 +4,6 @@ export interface IBook {
   author: string
   description: string
   cover: string
+  genre: string
   reading_link: string
 }

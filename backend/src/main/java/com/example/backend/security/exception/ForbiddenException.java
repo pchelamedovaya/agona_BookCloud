@@ -5,8 +5,8 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.security.core.AuthenticationException;
 
 @ResponseStatus(HttpStatus.FORBIDDEN)
-public class UserBannedException extends AuthenticationException {
-    public UserBannedException(String msg) {
+public class ForbiddenException extends AuthenticationException {
+    public ForbiddenException(String msg) {
         super(msg);
     }
 }

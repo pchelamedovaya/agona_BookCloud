@@ -10,7 +10,7 @@ export class BookService {
 	constructor(private readonly http: HttpClient) {}
 
 	getAllBooks(): Observable<IBook[]> {
-		return this.http.get<IBook[]>(`books`)
+		return this.http.get<any>(`books`).pipe(map(response => response.data))
 	}
 
 	getBooksForRecommendations(): Observable<IBook[]> {

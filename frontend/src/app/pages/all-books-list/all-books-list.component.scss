@@ -1,0 +1,81 @@
+@import 'colors';
+@import 'mixins';
+
+main {
+	display: flex;
+	justify-content: center;
+}
+
+.books-list {
+	display: grid;
+}
+
+.title {
+	@include flex-row;
+	justify-content: center;
+	font-family: SemiboldFont, serif;
+	color: $text-gray-dark;
+	letter-spacing: 1.25px;
+	user-select: none;
+	border-bottom: 1px solid $text-gray-dark-transparent;
+}
+
+@include dev(mobile) {
+	.title {
+		width: 100%;
+		justify-content: start;
+		font-size: 22px;
+		margin-bottom: 30px;
+		padding-bottom: 10px;
+	}
+
+	.container {
+		margin: 25px 25px 0;
+	}
+
+	.books-list {
+		grid-template-columns: repeat(2, 1fr);
+		column-gap: 20px;
+		row-gap: 30px;
+	}
+}
+
+@include dev(mobile-max) {
+	.books-list {
+		grid-template-columns: repeat(3, 1fr);
+	}
+}
+
+@include dev(tablet) {
+	.title {
+		font-size: 28px;
+		margin-bottom: 40px;
+	}
+
+	.container {
+		margin-top: 40px;
+	}
+
+	.books-list {
+		grid-template-columns: repeat(4, 1fr);
+	}
+}
+
+@include dev(laptop) {
+	.title {
+		font-size: 32px;
+		margin-bottom: 50px;
+	}
+
+	.container {
+		margin: 40px 50px 0;
+		max-width: 1550px;
+		width: 100%;
+	}
+
+	.books-list {
+		grid-template-columns: repeat(5, 1fr);
+		column-gap: 30px;
+		row-gap: 35px;
+	}
+}

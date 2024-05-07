@@ -20,9 +20,13 @@ import { ProfileComponent } from './pages/profile/profile.component'
 import { DashboardComponent } from './pages/dashboard/dashboard.component'
 import { BookCardComponent } from './components/book-card/book-card.component'
 import { UserCardComponent } from './components/user-card/user-card.component'
-import { AuthInterceptor } from './interceptors/auth.interceptor'
-import { BookDetailComponent } from './pages/book-detail/book-detail.component';
-import { FooterComponent } from './components/footer/footer.component'
+import { UrlInterceptor } from './interceptors/url.interceptor'
+import { BookDetailComponent } from './pages/book-detail/book-detail.component'
+import { FooterComponent } from './components/footer/footer.component';
+import { RecommendationsComponent } from './components/recommendations/recommendations.component';
+import { TextCardColorDirective } from './directives/text-card-color/text-card-color.directive';
+import { BackgroundCardColorDirective } from './directives/background-card-color/background-card-color.directive';
+import { AllBooksListComponent } from './pages/all-books-list/all-books-list.component'
 
 @NgModule({
 	declarations: [
@@ -42,7 +46,11 @@ import { FooterComponent } from './components/footer/footer.component'
 		BookCardComponent,
 		UserCardComponent,
 		BookDetailComponent,
-  FooterComponent
+		FooterComponent,
+  RecommendationsComponent,
+  TextCardColorDirective,
+  BackgroundCardColorDirective,
+  AllBooksListComponent
 	],
 	imports: [
 		BrowserModule,
@@ -55,7 +63,7 @@ import { FooterComponent } from './components/footer/footer.component'
 	providers: [
 		{
 			provide: HTTP_INTERCEPTORS,
-			useClass: AuthInterceptor,
+			useClass: UrlInterceptor,
 			multi: true
 		}
 	],

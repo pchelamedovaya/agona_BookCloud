@@ -65,3 +65,23 @@ a {
 		margin-top: 50px;
 	}
 }
+
+.bgCardColorDir {
+	&--light {
+		background-color: $background;
+	}
+
+	&--dark {
+		background-color: $background-form;
+	}
+}
+
+.textCardColorDir {
+  &--light {
+    color: $text-gray-dark;
+  }
+
+  &--dark {
+    color: $text-white;
+  }
+}

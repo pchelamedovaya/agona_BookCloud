@@ -38,4 +38,10 @@ export class RecommendationsComponent implements OnInit {
 	getBooks(): void {
 		this.books = this.bookService.getBooksForRecommendations()
 	}
+
+  navigateToAllBooks() {
+    this.router.navigate(['allbooks'])
+  }
+
+  protected readonly navigator = navigator
 }

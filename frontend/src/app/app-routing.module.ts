@@ -11,6 +11,7 @@ import { AuthGuard } from './guards/auth.guard'
 import { DashboardComponent } from './pages/dashboard/dashboard.component'
 import { AdminGuard } from './guards/admin.guard'
 import { BookDetailComponent } from './pages/book-detail/book-detail.component'
+import { AllBooksListComponent } from './pages/all-books-list/all-books-list.component'
 
 const routes: Routes = [
 	{
@@ -62,6 +63,10 @@ const routes: Routes = [
 		path: 'book/:id',
 		component: BookDetailComponent
 	},
+  {
+    path: 'allbooks',
+    component: AllBooksListComponent,
+  },
 	{
 		path: '**',
 		redirectTo: 'home'

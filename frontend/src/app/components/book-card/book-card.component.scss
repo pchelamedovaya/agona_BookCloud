@@ -2,7 +2,7 @@
 @import 'mixins';
 
 .container-book-card {
-	background: $background-form;
+	background: inherit;
 	height: 100%;
 }
 
@@ -13,13 +13,13 @@
 }
 
 .content {
-	background: $background-form;
+	background: inherit;
 }
 
 .title {
-	background: $background-form;
+	background: inherit;
 	font-family: SemiboldFont, serif;
-	color: $text-white;
+	//color: $text-white;
 	user-select: none;
 	overflow: hidden;
 	text-overflow: ellipsis;
@@ -29,16 +29,16 @@
 }
 
 .author {
-	background: $background-form;
+	background: inherit;
 	font-family: SemiboldFont, serif;
-	color: $text-white;
+	//color: $text-white;
 	user-select: none;
 }
 
 .description {
-	background: $background-form;
+	background: inherit;
 	font-family: RegularFont, serif;
-	color: $text-white;
+	//color: $text-white;
 	user-select: none;
 	overflow: hidden;
 	text-overflow: ellipsis;
@@ -64,6 +64,7 @@
 	.author {
 		font-size: 16px;
 		margin-bottom: 14px;
+    line-height: 20px;
 	}
 
 	.description {

@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core'
-import { HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http'
+import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http'
 import { Observable } from 'rxjs'
 import { API_URL } from '../constants/constants'
 
 @Injectable()
-export class AuthInterceptor implements HttpInterceptor {
+export class UrlInterceptor implements HttpInterceptor {
 	constructor() {}
 
-	intercept(req: HttpRequest<any>, next: HttpHandler): Observable<any> {
+	intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 		const accessToken = localStorage.getItem('accessToken')
 
 		if (accessToken) {

@@ -13,5 +13,6 @@ public class BookDto {
     private String author;
     private String description;
     private String cover;
+    private String genre;
     private String readingLink;
 }

@@ -4,6 +4,7 @@ package com.example.backend.service;
 import com.example.backend.dto.UserDto;
 import com.example.backend.entity.UserEntity;
 import com.example.backend.repository.UserRepository;
+import com.example.backend.security.exception.ForbiddenException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -36,10 +37,14 @@ public class UserService {
     public UserDto toggleUserState(Long id) {
         return userRepository.findById(id)
                 .map(user -> {
-                    if (user.getState() == UserEntity.State.ACTIVE) {
-                        user.setState(UserEntity.State.BANNED);
+                    if (user.getRole() == UserEntity.Role.USER) {
+                        if (user.getState() == UserEntity.State.ACTIVE) {
+                            user.setState(UserEntity.State.BANNED);
+                        } else {
+                            user.setState(UserEntity.State.ACTIVE);
+                        }
                     } else {
-                        user.setState(UserEntity.State.ACTIVE);
+                        throw new ForbiddenException("This user has the admin role");
                     }
                     userRepository.save(user);
                     return UserDto.builder()

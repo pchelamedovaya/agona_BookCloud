@@ -23,6 +23,7 @@ public class BookService {
                         .title(it.getTitle())
                         .author(it.getAuthor())
                         .description(it.getDescription())
+                        .genre(it.getGenre())
                         .cover(it.getCover())
                         .readingLink(it.getReadingLink())
                         .build())

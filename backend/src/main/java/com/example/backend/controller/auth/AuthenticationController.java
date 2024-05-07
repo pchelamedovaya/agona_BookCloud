@@ -1,7 +1,7 @@
 package com.example.backend.controller.auth;
 
 import com.example.backend.entity.UserEntity;
-import com.example.backend.security.exception.UserBannedException;
+import com.example.backend.security.exception.ForbiddenException;
 import com.example.backend.service.AuthenticationService;
 import com.example.backend.service.UserService;
 import lombok.RequiredArgsConstructor;
@@ -33,7 +33,7 @@ public class AuthenticationController {
         if (optionalUser.isPresent()) {
             UserEntity user = optionalUser.get();
             if (user.isBanned()) {
-                throw new UserBannedException("You are banned");
+                throw new ForbiddenException("You are banned");
             }
         } else {
             throw new AuthenticationException("User not found");

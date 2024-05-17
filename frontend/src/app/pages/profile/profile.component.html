@@ -1,1 +1,180 @@
-<p>profile works!</p>
+<div class="container">
+	<ng-container *ngIf="!userDataLoaded; else savedUserInfo">
+		<div *ngIf="!EnterInfo; else savedName" class="title">Account</div>
+		<ng-template #savedName>
+			<div class="title">
+				{{ savedData.firstName }} {{ savedData.lastName }}
+			</div>
+		</ng-template>
+		<form>
+			<button class="button-photo">
+				<div class="button-photo-container">
+					<img
+						src="assets/icons/upload.svg"
+						class="button-photo-img"
+						alt="Upload photo"
+					/>
+					<div class="button-photo-text">Upload photo</div>
+				</div>
+			</button>
+			<ng-template #savedAbout>
+				<div class="about">{{ savedData.about }}</div>
+			</ng-template>
+		</form>
+
+		<form
+			class="container-form"
+			[formGroup]="profileData"
+			(ngSubmit)="onSubmit()"
+		>
+			<ng-container *ngIf="!EnterInfo">
+				<div class="wrapper-firstname">
+					<label class="form-input" for="firstname">
+						<input
+							formControlName="firstName"
+							placeholder="Name"
+							type="text"
+							class="form-input--firstname"
+							id="firstname"
+							(input)="onInput()"
+						/>
+					</label>
+					<ng-container
+						class="container-error"
+						*ngIf="
+							(profileData.controls['firstName'].invalid &&
+								profileData.controls['firstName'].dirty) ||
+							profileData.controls['firstName'].touched
+						"
+					>
+						<div
+							class="container-error-message"
+							*ngIf="profileData.controls['firstName'].hasError('pattern')"
+						>
+							Please enter a correct name
+						</div>
+					</ng-container>
+				</div>
+			</ng-container>
+
+			<ng-container *ngIf="!EnterInfo">
+				<div class="wrapper-lastname">
+					<label class="form-input" for="lastname">
+						<input
+							formControlName="lastName"
+							placeholder="Surname"
+							type="text"
+							class="form-input--lastname"
+							id="lastname"
+							(input)="onInput()"
+						/>
+					</label>
+					<ng-container
+						class="container-error"
+						*ngIf="
+							(profileData.controls['lastName'].invalid &&
+								profileData.controls['lastName'].dirty) ||
+							profileData.controls['lastName'].touched
+						"
+					>
+						<div
+							class="container-error-message"
+							*ngIf="profileData.controls['lastName'].hasError('pattern')"
+						>
+							Please enter a correct surname
+						</div>
+					</ng-container>
+				</div>
+			</ng-container>
+
+			<ng-container *ngIf="!EnterInfo; else savedAbout">
+				<div class="wrapper-about">
+					<label class="form-input" for="about">
+						<input
+							formControlName="about"
+							placeholder="About me"
+							type="text"
+							class="form-input--about"
+							id="about"
+							(input)="onInput()"
+						/>
+					</label>
+					<ng-container
+						class="container-error"
+						*ngIf="
+							(profileData.controls['about'].invalid &&
+								profileData.controls['about'].dirty) ||
+							profileData.controls['about'].touched
+						"
+					>
+						<div
+							class="container-error-message"
+							*ngIf="profileData.controls['about'].hasError('maxlength')"
+						>
+							The maximum number of characters is 50
+						</div>
+					</ng-container>
+				</div>
+			</ng-container>
+
+			<ng-container *ngIf="!EnterInfo; else savedGenres">
+				<div class="wrapper-genres">
+					<label class="form-input" for="genres">
+						<input
+							formControlName="favouriteGenres"
+							placeholder="Favorite genres"
+							type="text"
+							class="form-input--genres"
+							id="genres"
+							(input)="onInput()"
+						/>
+					</label>
+				</div>
+			</ng-container>
+			<ng-template #savedGenres>
+				<div class="title-genres">Favorite genres:</div>
+				<div class="genres-saved">{{ savedData.favouriteGenres }}</div>
+			</ng-template>
+
+			<button
+				*ngIf="ButtonVisibility"
+				appButton
+				class="button-submit"
+				type="submit"
+				[disabled]="!profileData.valid"
+				[theme]="profileData.valid ? 'primary' : 'disabled'"
+				(click)="onEnter()"
+			>
+				{{ EnterInfo ? 'Edit' : 'Save' }}
+			</button>
+		</form>
+	</ng-container>
+
+	<ng-template #savedUserInfo>
+		<div class="title">{{ savedData.firstName }} {{ savedData.lastName }}</div>
+
+		<button class="button-photo">
+			<div class="button-photo-container">
+				<img
+					src="assets/icons/upload.svg"
+					class="button-photo-img"
+					alt="Upload photo"
+				/>
+				<div class="button-photo-text">Upload photo</div>
+			</div>
+		</button>
+		<div class="about">{{ savedData.about }}</div>
+
+		<div class="title-genres">Favorite genres:</div>
+		<div class="genres-saved">{{ savedData.favouriteGenres }}</div>
+
+		<button
+			appButton
+			class="button-submit"
+			type="submit"
+			(click)="showFieldsForEdit()"
+		>
+			Edit
+		</button>
+	</ng-template>
+</div>

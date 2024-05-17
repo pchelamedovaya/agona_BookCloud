@@ -1,0 +1,216 @@
+@import 'colors';
+@import 'mixins';
+
+.container {
+	@include flex-col;
+	caret-color: $text-gray-dark;
+
+	&-error-message {
+		font-family: RegularFont, serif;
+		font-size: 14px;
+		line-height: 20px;
+		user-select: none;
+		color: $errors;
+		text-align: center;
+	}
+}
+
+.title,
+.about,
+.title-genres,
+.genres-saved {
+  @include flex-row;
+  justify-content: center;
+  width: 100%;
+}
+
+.title {
+	font-family: SemiboldFont, serif;
+	color: $text-gray-dark;
+	background: inherit;
+	user-select: none;
+	margin-bottom: 35px;
+	letter-spacing: 1.25px;
+
+  &-genres {
+    font-family: SemiboldFont, serif;
+    color: $text-gray-dark;
+    background: inherit;
+    user-select: none;
+    margin-bottom: 15px;
+    letter-spacing: 1.25px;
+  }
+}
+
+.about,
+.genres-saved {
+  font-family: RegularFont, serif;
+  color: $text-gray-dark;
+  background: inherit;
+  user-select: none;
+  letter-spacing: 1.25px;
+}
+
+.container-form {
+	@include flex-col;
+}
+
+.form-input {
+	&--firstname,
+	&--lastname,
+	&--about,
+	&--genres {
+		width: 100%;
+		font-family: RegularFont, serif;
+		text-align: center;
+    background: inherit;
+
+		&::selection {
+			background-color: $blue-transparent;
+			color: $text-white;
+		}
+	}
+
+	::placeholder {
+		text-align: center;
+		color: $text-gray;
+	}
+
+	:focus::placeholder {
+		opacity: 0;
+		transition: opacity 0.3s ease;
+	}
+}
+
+.button {
+	&-submit {
+		cursor: pointer;
+		width: 130px;
+		font-size: 17px;
+		padding: 8px 35px;
+	}
+
+	&-photo {
+		cursor: pointer;
+		margin-bottom: 30px;
+
+		&-container,
+		&-text {
+			background: white;
+		}
+	}
+}
+
+img {
+	background: white;
+}
+
+.button-photo-img {
+	margin-top: -8px;
+}
+
+@include dev(mobile) {
+	.container {
+		margin-top: 80px;
+	}
+	.title {
+		letter-spacing: 1.25px;
+		font-size: 24px;
+    &-genres {
+      letter-spacing: 1.25px;
+      font-size: 18px;
+    }
+	}
+
+  .genres-saved {
+    margin-bottom: 10px;
+  }
+
+  .about {
+    margin-bottom: 50px;
+  }
+
+  .about,
+  .genres-saved{
+    font-size: 16px;
+  }
+
+	.form-input {
+		@include flex-row;
+		width: 285px;
+		height: 55px;
+		border-bottom: 1px solid $gray-placeholder;
+		margin-bottom: 8px;
+
+		&--firstname,
+		&--lastname,
+		&--about,
+		&--genres {
+			margin-bottom: -16px;
+			font-size: 17px;
+			color: $text-gray-dark;
+		}
+	}
+
+	.button-photo {
+		width: 100px;
+		height: 100px;
+		background: white;
+		border-radius: 13px;
+	}
+
+	.button-photo-text {
+		font-family: RegularFont, serif;
+		color: $text-gray;
+		font-size: 13px;
+		margin-top: 2px;
+	}
+}
+
+@include dev(laptop) {
+	.container {
+		margin-top: 85px;
+	}
+
+	.title {
+		font-size: 28px;
+    &-genres {
+      font-size: 22px;
+    }
+	}
+
+  .genres-saved {
+    margin-bottom: 20px;
+  }
+
+  .about,
+  .genres-saved{
+    font-size: 18px;
+  }
+
+	.form-input {
+		@include flex-row;
+		width: 350px;
+		height: 60px;
+		border-bottom: 1px solid $gray-placeholder;
+		margin-bottom: 8px;
+
+		&--firstname,
+		&--lastname,
+		&--about,
+		&--genres {
+			margin-bottom: -16px;
+			font-size: 19px;
+			color: $text-gray-dark;
+		}
+	}
+
+	.button-photo {
+		width: 120px;
+		height: 120px;
+	}
+
+	.button-photo-text {
+		font-size: 15px;
+	}
+}

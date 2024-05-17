@@ -5,8 +5,15 @@ img {
 	vertical-align: middle;
 }
 
+.recommendations {
+	@include flex-row;
+	justify-content: center;
+	width: 100%;
+}
+
 .info {
-	max-width: 1550px;
+	max-width: 1650px;
+	width: 100%;
 }
 
 .container {
@@ -57,40 +64,32 @@ img {
 }
 
 @include dev(mobile) {
-	//.container {
-	//	margin-top: 25px;
-	//}
-
 	.container-search {
 		height: 42px;
 		margin: 25px 25px 0;
+	}
 
-		&-input {
+	.search-input {
+		font-size: 14px;
+
+		&::placeholder {
 			font-size: 14px;
-
-			&::placeholder {
-				font-size: 14px;
-			}
 		}
 	}
 }
 
 @include dev(tablet) {
-	//.container {
-	//	margin-top: 0;
-	//}
-
 	.container-search {
 		margin: 40px 25px 0;
 		height: 45px;
 		max-width: 550px;
+	}
 
-		&-input {
+	.search-input {
+		font-size: 16px;
+
+		&::placeholder {
 			font-size: 16px;
-
-			&::placeholder {
-				font-size: 16px;
-			}
 		}
 	}
 }
@@ -100,13 +99,13 @@ img {
 		margin: 40px 50px 0;
 		max-width: 600px;
 		height: 50px;
+	}
 
-		&-input {
+	.search-input {
+		font-size: 18px;
+
+		&::placeholder {
 			font-size: 18px;
-
-			&::placeholder {
-				font-size: 18px;
-			}
 		}
 	}
 }

@@ -1,6 +1,12 @@
 @import 'colors';
 @import 'mixins';
 
+.recommendations {
+  @include flex-row;
+  justify-content: center;
+  width: 100%;
+}
+
 main {
 	@include flex-col;
 	justify-content: center;
@@ -252,6 +258,7 @@ img {
 		font-size: 60px;
 		margin-bottom: 17px;
 		width: 435px;
+        line-height: 65px;
 
 		&-category {
 			font-size: 30px;

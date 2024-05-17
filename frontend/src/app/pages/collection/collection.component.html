@@ -1,1 +1,22 @@
-<p>collection works!</p>
+<main>
+	<div class="container">
+		<div class="container-title">
+			<div class="title">My favorite books</div>
+		</div>
+		<ng-container *ngIf="books | async as bookList">
+			<ng-container *ngIf="bookList.length > 0; else noBooks">
+        <div class="container-books">
+					<app-book-card
+						*ngFor="let book of bookList"
+						[book]="book"
+					></app-book-card>
+				</div>
+			</ng-container>
+		</ng-container>
+	</div>
+	<ng-template #noBooks>
+		<div class="no-books-message">
+			There are no books you like in the collection yet
+		</div>
+	</ng-template>
+</main>

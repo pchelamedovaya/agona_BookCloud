@@ -1,0 +1,104 @@
+@import 'mixins';
+@import 'colors';
+
+main {
+	display: flex;
+	justify-content: center;
+}
+
+.container {
+	width: 100%;
+	max-width: 1550px;
+
+	&-title {
+		border-bottom: 1px solid $text-gray-dark-transparent;
+		margin-bottom: 30px;
+	}
+
+	&-books {
+		display: grid;
+	}
+}
+
+.no-books-message {
+	font-family: SemiboldFont, serif;
+	color: $text-gray-dark;
+	background: $background;
+	user-select: none;
+	letter-spacing: 1.25px;
+	line-height: 22px;
+}
+
+.title {
+	font-family: SemiboldFont, serif;
+	color: $text-gray-dark;
+	background: $background;
+	user-select: none;
+	letter-spacing: 1.25px;
+	margin-bottom: 10px;
+	font-size: 22px;
+}
+
+@include dev(mobile) {
+	.no-books-message {
+		font-size: 16px;
+	}
+	.container {
+		margin: 25px;
+	}
+	.container-books {
+		grid-template-columns: repeat(2, 1fr);
+		row-gap: 25px;
+		column-gap: 15px;
+	}
+}
+
+@include dev(mobile-max) {
+	.container-books {
+		grid-template-columns: repeat(3, 1fr);
+	}
+}
+
+@include dev(tablet) {
+	.container {
+		margin-top: 40px;
+
+		&-title {
+			margin-bottom: 40px;
+		}
+	}
+	.title {
+		font-size: 28px;
+	}
+	.container-books {
+		grid-template-columns: repeat(4, 1fr);
+		row-gap: 35px;
+		column-gap: 25px;
+	}
+}
+
+@include dev(laptop) {
+	.no-books-message {
+		font-size: 18px;
+	}
+	.container {
+		margin: 40px 50px 0;
+
+		&-title {
+			margin-bottom: 50px;
+		}
+	}
+	.title {
+		font-size: 32px;
+	}
+	.container-books {
+		grid-template-columns: repeat(5, 1fr);
+	}
+}
+
+@include dev(desktop) {
+	.container {
+		width: 100%;
+		max-width: 1550px;
+	}
+}

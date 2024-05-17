@@ -26,7 +26,11 @@ import { FooterComponent } from './components/footer/footer.component';
 import { RecommendationsComponent } from './components/recommendations/recommendations.component';
 import { TextCardColorDirective } from './directives/text-card-color/text-card-color.directive';
 import { BackgroundCardColorDirective } from './directives/background-card-color/background-card-color.directive';
-import { AllBooksListComponent } from './pages/all-books-list/all-books-list.component'
+import { AllBooksListComponent } from './pages/all-books-list/all-books-list.component';
+import { AllBooksByGenreListComponent } from './pages/all-books-by-genre-list/all-books-by-genre-list.component'
+import { MatPaginator } from '@angular/material/paginator'
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
+import { MatProgressSpinner } from '@angular/material/progress-spinner'
 
 @NgModule({
 	declarations: [
@@ -47,10 +51,11 @@ import { AllBooksListComponent } from './pages/all-books-list/all-books-list.com
 		UserCardComponent,
 		BookDetailComponent,
 		FooterComponent,
-  RecommendationsComponent,
-  TextCardColorDirective,
-  BackgroundCardColorDirective,
-  AllBooksListComponent
+		RecommendationsComponent,
+		TextCardColorDirective,
+		BackgroundCardColorDirective,
+		AllBooksListComponent,
+		AllBooksByGenreListComponent
 	],
 	imports: [
 		BrowserModule,
@@ -58,7 +63,10 @@ import { AllBooksListComponent } from './pages/all-books-list/all-books-list.com
 		NgOptimizedImage,
 		FormsModule,
 		ReactiveFormsModule,
-		HttpClientModule
+		HttpClientModule,
+		BrowserAnimationsModule,
+		MatPaginator,
+		MatProgressSpinner
 	],
 	providers: [
 		{

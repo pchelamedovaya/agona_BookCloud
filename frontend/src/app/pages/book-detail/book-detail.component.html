@@ -1,40 +1,45 @@
-<div class="main">
-	<div class="container">
-    <ng-container *ngIf="book | async as book">
-    <div class="book">
-			<img [src]='book.cover' class="cover" alt="Book cover" />
-			<button (click)="toggleButton()" class="heart-container">
-				<img
-					*ngIf="!buttonPressed"
-					src="../../../assets/icons/heart.svg"
-					class="heart"
-					alt="Heart"
-				/>
-				<img
-					*ngIf="buttonPressed"
-					src="../../../assets/icons/heart-filled.svg"
-					class="heart-filled"
-					alt="Heart filled"
-				/>
-			</button>
-		</div>
-      <div class="book-info">
-        <div class="title">{{ book.title }}</div>
-				<div class="author">{{ book.author }}</div>
-				<div class="description-genre">
-					{{ book.genre }}
-				</div>
-				<div class="description">
-					<div class="description-title">Description</div>
-					<div class="description-text">
-						{{book.description}}
-					</div>
-					<div class="buttons">
-						<button appButton class="button-read">Read</button>
-						<button appButton class="button-join">Join chat</button>
-					</div>
-				</div>
-			</div>
-		</ng-container>
-	</div>
-</div>
+<main class='main'>
+<!--  <button class='go-back' appButton (click)='goBack()'>-->
+<!--    <img class='go-back-img' src='../../../assets/icons/back.svg' alt='Go back'>-->
+<!--  </button>-->
+  <div class='container'>
+    <ng-container *ngIf='book | async as book'>
+      <div class='book'>
+        <img [src]='book.cover' class='cover' alt='Book cover' />
+        <button (click)='toggleButton()' class='heart-container'>
+          <img
+            *ngIf='!buttonPressed'
+            src='../../../assets/icons/heart.svg'
+            class='heart'
+            alt='Heart'
+            (click)='addToFavorite(book.id)'
+          />
+          <img
+            *ngIf='buttonPressed'
+            src='../../../assets/icons/heart-filled.svg'
+            class='heart-filled'
+            alt='Heart filled'
+            (click)='deleteFromFavorite(book.id)'
+          />
+        </button>
+      </div>
+      <div class='book-info'>
+        <div class='title'>{{ book.title }}</div>
+        <div class='author'>{{ book.author }}</div>
+        <div class='description-genre'>
+          {{ book.genre }}
+        </div>
+        <div class='description'>
+          <div class='description-title'>Description</div>
+          <div class='description-text'>
+            {{ book.description }}
+          </div>
+          <div class='buttons'>
+            <button appButton class='button-read'>Read</button>
+            <button appButton class='button-join'>Join chat</button>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+</main>

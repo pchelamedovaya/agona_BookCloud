@@ -1,6 +1,6 @@
 <main>
-  <div class="container">
-    <div class="title">
+	<div class="container">
+		<div class="title">
 			Reading Is<br />
 			Fascinating
 		</div>
@@ -25,16 +25,32 @@
 			Here you can choose a book based on your favorite genres
 		</div>
 		<div class="container-genres">
-			<div class="genre-journalism">Journalism<a>Show more</a></div>
+			<div class="genre-journalism">
+				Journalism<a [routerLink]="['/books', 'journalism']">Show more</a>
+			</div>
 			<div class="genre-fantasy">
 				<span class="genre-fantasy-span">Read</span>
-				Science fiction & Fantasy<a>Show more</a>
+				Science fiction & Fantasy<a [routerLink]="['/books', 'fantasy']"
+					>Show more</a
+				>
 			</div>
-			<div class="genre-prose">Classic prose<a>Show more</a></div>
-			<div class="genre-novel">Romance novels<a>Show more</a></div>
-			<div class="genre-detective">Detective & Thriller<a>Show more</a></div>
-			<div class="genre-biography">Biography & Memoirs<a>Show more</a></div>
+			<div class="genre-prose">
+				Classic prose<a [routerLink]="['/books', 'prose']">Show more</a>
+			</div>
+			<div class="genre-novel">
+				Romance novels<a [routerLink]="['/books', 'novel']">Show more</a>
+			</div>
+			<div class="genre-detective">
+				Detective & Thriller<a [routerLink]="['/books', 'detective']"
+					>Show more</a
+				>
+			</div>
+			<div class="genre-biography">
+				Biography & Memoirs<a [routerLink]="['/books', 'biography']"
+					>Show more</a
+				>
+			</div>
 		</div>
 	</div>
-  <app-recommendations></app-recommendations>
+	<app-recommendations class='recommendations'></app-recommendations>
 </main>

@@ -12,6 +12,7 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component'
 import { AdminGuard } from './guards/admin.guard'
 import { BookDetailComponent } from './pages/book-detail/book-detail.component'
 import { AllBooksListComponent } from './pages/all-books-list/all-books-list.component'
+import { AllBooksByGenreListComponent } from './pages/all-books-by-genre-list/all-books-by-genre-list.component'
 
 const routes: Routes = [
 	{
@@ -63,9 +64,12 @@ const routes: Routes = [
 		path: 'book/:id',
 		component: BookDetailComponent
 	},
-  {
-    path: 'allbooks',
-    component: AllBooksListComponent,
+	{
+		path: 'allbooks',
+		component: AllBooksListComponent
+	},
+  { path: 'books/:genre',
+    component: AllBooksByGenreListComponent
   },
 	{
 		path: '**',

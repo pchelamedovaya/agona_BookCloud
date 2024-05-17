@@ -1,13 +1,27 @@
 <main>
-	<div class="container">
-    <div class='title'>All our books</div>
-		<div class="books-list">
-			<app-book-card
-				appBackgroundCardColor
-				[theme]="'light'"
-				*ngFor="let book of books | async"
-				[book]="book"
-			></app-book-card>
+	<div class="main">
+		<div class="wrapper">
+			<div class="container">
+				<div class="title">All our books</div>
+				<div class="container-paginator">
+					<mat-paginator
+						[length]="(totalBooks$ | async) || 0"
+						[pageSize]="pageSize"
+						[hidePageSize]="true"
+						showFirstLastButtons="true"
+						(page)="onPageChange($event)"
+					></mat-paginator>
+				</div>
+				<div class="books-list" *ngIf="!(isLoading$ | async)">
+					<app-book-card
+						appTextCardColor
+						[theme]="'light'"
+						*ngFor="let book of books$ | async"
+						[book]="book"
+						[@fadeInOut]
+					></app-book-card>
+				</div>
+			</div>
 		</div>
 	</div>
 </main>

@@ -42,6 +42,4 @@ export class RecommendationsComponent implements OnInit {
   navigateToAllBooks() {
     this.router.navigate(['allbooks'])
   }
-
-  protected readonly navigator = navigator
 }

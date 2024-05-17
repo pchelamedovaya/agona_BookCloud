@@ -44,6 +44,7 @@ export class AuthService {
 				localStorage.setItem('accessToken', response.accessToken)
 				localStorage.setItem('refreshToken', response.refreshToken)
 				localStorage.setItem('role', response.role)
+				localStorage.setItem('userId', String(response.id))
 				this.onUserRoleChanged.next(response.role)
 				this.isAuthSignal.set(true)
 			}),

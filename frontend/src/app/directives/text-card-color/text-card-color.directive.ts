@@ -13,7 +13,7 @@ import { filter } from 'rxjs'
 export class TextCardColorDirective {
 	@Input() theme!: 'light' | 'dark'
 
-	lightRoutes: string[] = ['/collection', '/allbooks']
+	lightRoutes: string[] = ['/home', '/search']
 
 	isLightRoutes?: boolean
 
@@ -24,7 +24,7 @@ export class TextCardColorDirective {
 			.subscribe(() => {
 				this.isLightRoutes = this.lightRoutes.includes(this.router.url)
 			})
-		if (this.isLightRoutes) {
+		if (!this.isLightRoutes) {
 			this.theme = 'light'
 		} else {
 			this.theme = 'dark'

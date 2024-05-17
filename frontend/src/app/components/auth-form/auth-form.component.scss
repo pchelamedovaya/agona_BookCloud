@@ -18,6 +18,7 @@
 	&--password-repeat {
 		width: 100%;
 		font-family: RegularFont, serif;
+    background: inherit;
 
 		&::selection {
 			background-color: $blue-transparent;

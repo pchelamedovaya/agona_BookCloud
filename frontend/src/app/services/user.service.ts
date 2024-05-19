@@ -37,11 +37,7 @@ export class UserService {
 		return this.http.get<IUser>(`users/currentUserInfo`, { headers })
 	}
 
-  updateAvatar() {
+	updateAvatar() {}
 
-  }
-
-  getAvatar() {
-
-  }
+	getAvatar() {}
 }

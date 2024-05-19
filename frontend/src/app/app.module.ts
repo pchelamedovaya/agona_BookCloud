@@ -30,7 +30,9 @@ import { AllBooksListComponent } from './pages/all-books-list/all-books-list.com
 import { AllBooksByGenreListComponent } from './pages/all-books-by-genre-list/all-books-by-genre-list.component'
 import { MatPaginator } from '@angular/material/paginator'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
-import { MatProgressSpinner } from '@angular/material/progress-spinner'
+import { MatProgressSpinner } from '@angular/material/progress-spinner';
+import { CommentsComponent } from './components/comments/comments.component';
+import { AutoSizeDirective } from './directives/auto-size/auto-size.directive'
 
 @NgModule({
 	declarations: [
@@ -55,7 +57,9 @@ import { MatProgressSpinner } from '@angular/material/progress-spinner'
 		TextCardColorDirective,
 		BackgroundCardColorDirective,
 		AllBooksListComponent,
-		AllBooksByGenreListComponent
+		AllBooksByGenreListComponent,
+  CommentsComponent,
+  AutoSizeDirective
 	],
 	imports: [
 		BrowserModule,
@@ -65,7 +69,7 @@ import { MatProgressSpinner } from '@angular/material/progress-spinner'
 		ReactiveFormsModule,
 		HttpClientModule,
 		BrowserAnimationsModule,
-		MatPaginator,
+    MatPaginator,
 		MatProgressSpinner
 	],
 	providers: [

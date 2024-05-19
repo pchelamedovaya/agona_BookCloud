@@ -1,45 +1,90 @@
-<main class='main'>
-<!--  <button class='go-back' appButton (click)='goBack()'>-->
-<!--    <img class='go-back-img' src='../../../assets/icons/back.svg' alt='Go back'>-->
-<!--  </button>-->
-  <div class='container'>
-    <ng-container *ngIf='book | async as book'>
-      <div class='book'>
-        <img [src]='book.cover' class='cover' alt='Book cover' />
-        <button (click)='toggleButton()' class='heart-container'>
-          <img
-            *ngIf='!buttonPressed'
-            src='../../../assets/icons/heart.svg'
-            class='heart'
-            alt='Heart'
-            (click)='addToFavorite(book.id)'
-          />
-          <img
-            *ngIf='buttonPressed'
-            src='../../../assets/icons/heart-filled.svg'
-            class='heart-filled'
-            alt='Heart filled'
-            (click)='deleteFromFavorite(book.id)'
-          />
-        </button>
-      </div>
-      <div class='book-info'>
-        <div class='title'>{{ book.title }}</div>
-        <div class='author'>{{ book.author }}</div>
-        <div class='description-genre'>
-          {{ book.genre }}
-        </div>
-        <div class='description'>
-          <div class='description-title'>Description</div>
-          <div class='description-text'>
-            {{ book.description }}
-          </div>
-          <div class='buttons'>
-            <button appButton class='button-read'>Read</button>
-            <button appButton class='button-join'>Join chat</button>
-          </div>
-        </div>
-      </div>
-    </ng-container>
-  </div>
+<main class="main">
+	<div class="container">
+		<ng-container *ngIf="book | async as book">
+			<div class="book">
+				<img [src]="book.cover" class="cover" alt="Book cover" />
+				<button (click)="toggleButton()" class="heart-container">
+					<img
+						*ngIf="!buttonPressed"
+						src="../../../assets/icons/heart.svg"
+						class="heart"
+						alt="Heart"
+						(click)="addToFavorite(book.id)"
+					/>
+					<img
+						*ngIf="buttonPressed"
+						src="../../../assets/icons/heart-filled.svg"
+						class="heart-filled"
+						alt="Heart filled"
+						(click)="deleteFromFavorite(book.id)"
+					/>
+				</button>
+			</div>
+			<div class="book-info">
+				<div class="title">{{ book.title }}</div>
+				<div class="author">{{ book.author }}</div>
+				<div class="description-genre">
+					{{ book.genre }}
+				</div>
+				<div class="description">
+					<div class="description-title">Description</div>
+					<div class="description-text">
+						{{ book.description }}
+					</div>
+					<div class="buttons">
+						<button appButton class="button-read">Read</button>
+						<button appButton class="button-join">Join chat</button>
+					</div>
+				</div>
+			</div>
+		</ng-container>
+		<div class="comments">
+			<div class="comments-title">Comments</div>
+			<form
+				autocomplete="off"
+				[formGroup]="commentForm"
+				(ngSubmit)="onSubmit()"
+				class="comments-form"
+			>
+				<div class="container-input">
+					<label for="input" class="input-label">
+						<textarea
+							appAutoSize
+							rows="1"
+							id="input"
+							class="input"
+							formControlName="comment"
+							placeholder="Type here.."
+						></textarea>
+					</label>
+					<button
+						class="button-submit"
+						type="submit"
+						[disabled]="commentForm.invalid"
+					>
+						<img
+							src="../../../assets/icons/submit.svg"
+							class="img-submit"
+							alt="Submit"
+						/>
+					</button>
+				</div>
+			</form>
+			<span class="border"></span>
+			<div class="no-comments" *ngIf="comments.length === 0">
+				There are no comments yet.. You can be the first!
+			</div>
+			<app-comments
+				*ngFor="let comment of displayedComments"
+				[comment]="comment"
+			></app-comments>
+			<button
+				class="show-more"
+				*ngIf="displayedComments.length < comments.length"
+				(click)="showMoreComments()"
+			>
+				Show more
+			</button>
+		</div>
+	</div>
 </main>

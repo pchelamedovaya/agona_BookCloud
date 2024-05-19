@@ -1,24 +1,105 @@
 @import '../../styles/mixins';
 @import '../../styles/colors';
 
-.go-back {
-  margin: 0 0 0 25px;
-  padding: 10px 10px 10px 12px;
-  border-radius: 50%;
-  width: 50px;
-  height: 50px;
-  &-img {
-    display: block;
-    background-color: $background-dark;
-  }
+img {
+	vertical-align: middle;
+}
+
+.no-comments,
+.show-more {
+	font-family: RegularFont, serif;
+	color: $text-gray-dark;
+	user-select: none;
+	line-height: 20px;
+	font-size: 16px;
+}
+
+.show-more {
+	border-bottom: 1px solid $text-gray-dark;
+	background: $background;
+	margin-top: 5px;
+	padding-bottom: 2px;
+	cursor: pointer;
+}
+
+.comments {
+	width: 100%;
+}
+
+.border {
+	border-bottom: 1px solid $background-form;
+	width: 100%;
+	display: block;
+	margin-top: 6px;
+	margin-bottom: 30px;
 }
 
 .container {
 	justify-items: center;
+
+	&-input {
+		@include flex-row;
+		justify-content: space-between;
+		align-items: end;
+	}
+}
+
+textarea {
+	resize: none;
+	outline: none;
+	border: 1px solid $background;
+	padding: 0;
+}
+
+.img-submit {
+	background: $background;
+	padding-bottom: 22px;
+	margin-bottom: 2px;
+}
+
+.button-submit {
+	cursor: pointer;
+	margin-bottom: -6px;
+	background: $background;
+}
+
+.input {
+	height: 22px;
+	padding-bottom: 5px;
+	margin-bottom: 2px;
+	background: inherit;
+	width: 100%;
+	color: $text-gray-dark;
+	min-height: 35px;
+
+	font-family: RegularFont, serif;
+	line-height: 20px;
+	font-size: 16px;
+
+	&-label {
+		width: 100%;
+		margin-right: 15px;
+	}
+
+	&::selection {
+		background-color: $blue-transparent;
+		color: $text-white;
+	}
+
+	&::placeholder {
+		text-align: start;
+		padding-top: 3px;
+		font-size: 16px;
+	}
+
+	&:focus::placeholder {
+		opacity: 0;
+		transition: opacity 0.3s ease;
+	}
 }
 
 .title-no-books {
-  margin-top: 200px;
+	margin-top: 200px;
 }
 
 .heart,
@@ -72,6 +153,17 @@
 	margin-bottom: 5px;
 }
 
+.comments-title {
+	font-family: RegularFont, serif;
+	color: $text-gray-dark;
+	user-select: none;
+	font-size: 22px;
+	line-height: 36px;
+	margin-top: 50px;
+	margin-bottom: 25px;
+	border-bottom: 1px $background-form solid;
+}
+
 .description {
 	&-genre {
 		font-family: RegularFont, serif;
@@ -109,8 +201,8 @@
 }
 
 @include dev(mobile) {
-	.main {
-		margin-bottom: 25px;
+	.comments {
+		margin: 0 25px 25px;
 	}
 	.title,
 	.author,
@@ -159,9 +251,17 @@
 	.description-title {
 		display: none;
 	}
+	.comments-title {
+		margin-top: 0;
+	}
 	.container {
 		grid-template-columns: repeat(2, 1fr);
 		gap: 35px;
+
+		& > .comments {
+			grid-column: 1 / -1;
+			grid-row: 2;
+		}
 	}
 	.description {
 		&-text {

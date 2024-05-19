@@ -1,9 +1,18 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output } from '@angular/core'
+import {
+	ChangeDetectionStrategy,
+	ChangeDetectorRef,
+	Component,
+	OnInit
+} from '@angular/core'
 import { IBook } from '../../types/book.interface'
-import { ActivatedRoute, Router } from '@angular/router'
+import { ActivatedRoute } from '@angular/router'
 import { BookService } from '../../services/book.service'
 import { Observable } from 'rxjs'
-import { Location } from '@angular/common'
+import { IComment } from '../../types/comments.interface'
+import { CommentService } from '../../services/comment.service'
+import { FormControl, FormGroup, Validators } from '@angular/forms'
+import { IUser } from '../../types/user.interface'
+import { UserService } from '../../services/user.service'
 
 @Component({
 	selector: 'app-book-detail',
@@ -16,12 +25,23 @@ export class BookDetailComponent implements OnInit {
 	book?: Observable<IBook>
 	bookId?: number
 	favorites: number[] = []
+	comments: IComment[] = []
+	commentForm: FormGroup
+	currentUser: IUser | null = null
+  commentsToShow: number = 3
+  displayedComments: IComment[] = []
 
-	constructor(
+  constructor(
 		private route: ActivatedRoute,
 		public bookService: BookService,
-    private location: Location
-	) {}
+		private commentService: CommentService,
+		private cdr: ChangeDetectorRef,
+		private userService: UserService
+	) {
+		this.commentForm = new FormGroup({
+			comment: new FormControl('', [Validators.required])
+		})
+	}
 
 	ngOnInit(): void {
 		this.bookId = +this.route.snapshot.params['id']
@@ -34,7 +54,16 @@ export class BookDetailComponent implements OnInit {
 				this.favorites = JSON.parse(favoritesString)
 				this.buttonPressed = this.favorites.includes(this.bookId)
 			}
+			this.fetchCurrentUser()
 		}
+		this.getComments(this.bookId)
+	}
+
+	fetchCurrentUser() {
+		this.userService.getCurrentUserInfo().subscribe(user => {
+			this.currentUser = user
+			this.cdr.detectChanges()
+		})
 	}
 
 	toggleButton() {
@@ -54,7 +83,7 @@ export class BookDetailComponent implements OnInit {
 				`favorites_${userId}`,
 				JSON.stringify(this.favorites)
 			)
-    }
+		}
 	}
 
 	delete() {
@@ -67,7 +96,7 @@ export class BookDetailComponent implements OnInit {
 					`favorites_${userId}`,
 					JSON.stringify(this.favorites)
 				)
-      }
+			}
 		}
 	}
 
@@ -85,7 +114,31 @@ export class BookDetailComponent implements OnInit {
 		})
 	}
 
-  goBack() {
-    this.location.back()
+  getComments(bookId: number): void {
+    this.commentService.getComments(bookId).subscribe((comments) => {
+      this.comments = comments
+      this.updateDisplayedComments()
+      this.cdr.markForCheck()
+    })
+  }
+
+  updateDisplayedComments(): void {
+    this.displayedComments = this.comments.slice(0, this.commentsToShow)
+  }
+
+  showMoreComments(): void {
+    this.commentsToShow += 3
+    this.updateDisplayedComments()
+  }
+
+  onSubmit() {
+    if (this.commentForm.valid) {
+      const comment = this.commentForm.value.comment
+      this.commentService.addComment(this.bookId!, comment).subscribe(() => {
+        this.getComments(this.bookId!)
+        this.commentForm.reset()
+        this.cdr.markForCheck()
+      })
+    }
   }
 }

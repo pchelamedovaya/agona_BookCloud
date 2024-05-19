@@ -1,0 +1,22 @@
+@import "colors";
+@import "mixins";
+
+.comments {
+  margin-bottom: 18px;
+}
+
+.name {
+  margin-bottom: 5px;
+  font-size: 18px;
+}
+
+.comment {
+  font-size: 16px;
+}
+
+.name, .comment {
+  font-family: RegularFont, serif;
+  color: $text-gray-dark;
+  user-select: none;
+  line-height: 20px;
+}
